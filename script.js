@@ -8,20 +8,31 @@ const reportList = document.getElementById("reportList");
 
 // ✅ Render Reports in Dashboard Table
 function renderReports() {
+  const tagFilter = document.getElementById("searchTag").value.toLowerCase();
+  const dateFilter = document.getElementById("searchDate").value.toLowerCase();
+  const unitFilter = document.getElementById("searchUnit").value.toLowerCase();
+
   reportList.innerHTML = "";
-  reports.forEach((r, i) => {
-    reportList.innerHTML += `
-      <tr>
-        <td>${r.tagNo}</td>
-        <td>${r.date}</td>
-        <td>${r.unit}</td>
-        <td>
-          <button onclick="viewReport(${i})">View/Edit</button>
-          <button style="background:#dc3545" onclick="deleteReport(${i})">Delete</button>
-        </td>
-      </tr>`;
-  });
+  reports
+    .filter(r =>
+      r.tagNo.toLowerCase().includes(tagFilter) &&
+      r.date.toLowerCase().includes(dateFilter) &&
+      r.unit.toLowerCase().includes(unitFilter)
+    )
+    .forEach((r, i) => {
+      reportList.innerHTML += `
+        <tr>
+          <td>${r.tagNo}</td>
+          <td>${r.date}</td>
+          <td>${r.unit}</td>
+          <td>
+            <button onclick="viewReport(${i})">View/Edit</button>
+            <button style="background:#dc3545" onclick="deleteReport(${i})">Delete</button>
+          </td>
+        </tr>`;
+    });
 }
+
 renderReports();
 
 // ✅ Add New Report Button
