@@ -35,6 +35,11 @@ function renderReports() {
 
 renderReports();
 
+// ✅ Real-time Search & Filter ke liye yaha add karo
+["searchTag", "searchDate", "searchUnit"].forEach(id => {
+  document.getElementById(id).addEventListener("input", renderReports);
+});
+
 // ✅ Add New Report Button
 document.getElementById("addNewBtn").addEventListener("click", () => {
   formPage.classList.remove("hidden");
@@ -180,6 +185,7 @@ function handleExcelUpload(event) {
 
   reader.readAsArrayBuffer(file);
 }
+
 
 // ✅ Download Template Button
 document.getElementById("downloadTemplateBtn").addEventListener("click", () => {
