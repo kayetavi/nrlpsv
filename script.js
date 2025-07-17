@@ -72,25 +72,70 @@ function clearForm() {
   document.querySelectorAll("#formPage input, #formPage select").forEach(el => el.value = "");
 }
 
-// ✅ Excel Bulk Upload
+/// ✅ Excel Bulk Upload (Improved)
 document.getElementById("excelUploadInput").addEventListener("change", handleExcelUpload);
+
 function handleExcelUpload(event) {
   const file = event.target.files[0];
+  if (!file) return;
+
   const reader = new FileReader();
   reader.onload = function (e) {
     const data = new Uint8Array(e.target.result);
     const workbook = XLSX.read(data, { type: "array" });
     const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
     const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+
+    let uploadedCount = 0;
+
     jsonData.forEach(row => {
-      let newReport = {};
-      Object.keys(row).forEach(k => {newReport[k] = row[k] || "";});
+      let newReport = {
+        tagNo: row.tagNo || "",
+        date: row.date || "",
+        unit: row.unit || "",
+        bookNo: row.bookNo || "",
+        slNo: row.slNo || "",
+        type: row.type || "",
+        manufacturer: row.manufacturer || "",
+        service: row.service || "",
+        workOrder: row.workOrder || "",
+        woDate: row.woDate || "",
+        changeSet: row.changeSet || "",
+        authRef: row.authRef || "",
+        coldDiff: row.coldDiff || "",
+        backPressure: row.backPressure || "",
+        setPressure: row.setPressure || "",
+        orifice: row.orifice || "",
+        testingMedium: row.testingMedium || "",
+        reason: row.reason || "",
+        repairs: row.repairs || "",
+        asReceived: row.asReceived || "",
+        setAt: row.setAt || "",
+        holdingTime: row.holdingTime || "",
+        bubbleMax: row.bubbleMax || "",
+        bubbleObs: row.bubbleObs || "",
+        status: row.status || "",
+        remarks: row.remarks || "",
+        sealed: row.sealed || "",
+        witness: row.witness || "",
+        nextDue: row.nextDue || "",
+        signature: row.signature || "",
+        name: row.name || "",
+        signDate: row.signDate || ""
+      };
+
+      // ✅ (Optional) Prevent Duplicate by Tag No
+      // if (!reports.some(r => r.tagNo === newReport.tagNo)) {
       reports.push(newReport);
+      uploadedCount++;
+      // }
     });
+
     localStorage.setItem("psvReports", JSON.stringify(reports));
     renderReports();
-    alert("✅ Excel Bulk Upload Successful! Total Reports: " + reports.length);
-    event.target.value = "";
+    alert(`✅ Excel Bulk Upload Successful!\nTotal Reports: ${reports.length}\nNewly Uploaded: ${uploadedCount}`);
+    event.target.value = ""; // reset input
   };
+
   reader.readAsArrayBuffer(file);
 }
