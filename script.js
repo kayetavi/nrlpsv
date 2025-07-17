@@ -134,41 +134,51 @@ function handleExcelUpload(event) {
 
     let uploadedCount = 0;
 
-    jsonData.forEach(row => {
-      let newReport = {
-        tagNo: row.tagNo || "",
-        date: row.date || "",
-        unit: row.unit || "",
-        bookNo: row.bookNo || "",
-        slNo: row.slNo || "",
-        type: row.type || "",
-        manufacturer: row.manufacturer || "",
-        service: row.service || "",
-        workOrder: row.workOrder || "",
-        woDate: row.woDate || "",
-        changeSet: row.changeSet || "",
-        authRef: row.authRef || "",
-        coldDiff: row.coldDiff || "",
-        backPressure: row.backPressure || "",
-        setPressure: row.setPressure || "",
-        orifice: row.orifice || "",
-        testingMedium: row.testingMedium || "",
-        reason: row.reason || "",
-        repairs: row.repairs || "",
-        asReceived: row.asReceived || "",
-        setAt: row.setAt || "",
-        holdingTime: row.holdingTime || "",
-        bubbleMax: row.bubbleMax || "",
-        bubbleObs: row.bubbleObs || "",
-        status: row.status || "",
-        remarks: row.remarks || "",
-        sealed: row.sealed || "",
-        witness: row.witness || "",
-        nextDue: row.nextDue || "",
-        signature: row.signature || "",
-        name: row.name || "",
-        signDate: row.signDate || ""
-      };
+   jsonData.forEach(row => {
+  let newReport = {
+    tagNo: row.tagNo || "",
+    date: row.date || "",
+    unit: row.unit || "",
+    bookNo: row.bookNo || "",
+    slNo: row.slNo || "",
+    type: row.type || "",
+    manufacturer: row.manufacturer || "",
+    service: row.service || "",
+    workOrder: row.workOrder || "",
+    woDate: row.woDate || "",
+    changeSet: row.changeSet || "",
+    authRef: row.authRef || "",
+    coldDiff: row.coldDiff || "",
+    backPressure: row.backPressure || "",
+    setPressure: row.setPressure || "",
+    orifice: row.orifice || "",
+    testingMedium: row.testingMedium || "",
+    reason: row.reason || "",
+    repairs: row.repairs || "",
+    asReceived: row.asReceived || "",
+    setAt: row.setAt || "",
+    holdingTime: row.holdingTime || "",
+    bubbleMax: row.bubbleMax || "",
+    bubbleObs: row.bubbleObs || "",
+    status: row.status || "",
+    remarks: row.remarks || "",
+    sealed: row.sealed || "",
+    witness: row.witness || "",
+    nextDue: row.nextDue || "",
+    signature: row.signature || "",
+    name: row.name || "",
+    signDate: row.signDate || ""
+  };
+
+  // ✅ Duplicate Check & Overwrite by Tag No
+  const existingIndex = reports.findIndex(r => r.tagNo === newReport.tagNo);
+  if (existingIndex !== -1) {
+    reports[existingIndex] = newReport; // Overwrite existing record
+  } else {
+    reports.push(newReport); // Add new record
+  }
+  uploadedCount++;
+});
 
       // ✅ Optional Duplicate Prevention (Uncomment if needed)
       // if (!reports.some(r => r.tagNo === newReport.tagNo)) {
