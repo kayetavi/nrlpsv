@@ -1,19 +1,30 @@
+// ✅ Local Storage Initialization
 let reports = JSON.parse(localStorage.getItem("psvReports")) || [];
 let editIndex = null;
+
 const dashboard = document.getElementById("dashboard");
 const formPage = document.getElementById("formPage");
 const reportList = document.getElementById("reportList");
 
+// ✅ Render Reports in Dashboard Table
 function renderReports() {
   reportList.innerHTML = "";
   reports.forEach((r, i) => {
-    reportList.innerHTML += `<tr><td>${r.tagNo}</td><td>${r.date}</td><td>${r.unit}</td>
-      <td><button onclick="viewReport(${i})">View/Edit</button>
-      <button style="background:#dc3545" onclick="deleteReport(${i})">Delete</button></td></tr>`;
+    reportList.innerHTML += `
+      <tr>
+        <td>${r.tagNo}</td>
+        <td>${r.date}</td>
+        <td>${r.unit}</td>
+        <td>
+          <button onclick="viewReport(${i})">View/Edit</button>
+          <button style="background:#dc3545" onclick="deleteReport(${i})">Delete</button>
+        </td>
+      </tr>`;
   });
 }
 renderReports();
 
+// ✅ Add New Report Button
 document.getElementById("addNewBtn").addEventListener("click", () => {
   formPage.classList.remove("hidden");
   dashboard.classList.add("hidden");
@@ -21,16 +32,26 @@ document.getElementById("addNewBtn").addEventListener("click", () => {
   clearForm();
 });
 
+// ✅ Save Report
 document.getElementById("saveBtn").addEventListener("click", () => {
   const newReport = getFormData();
-  if (editIndex !== null) {reports[editIndex] = newReport;} else {reports.push(newReport);}
+  if (!newReport.tagNo) {
+    alert("⚠️ Tag No is required!");
+    return;
+  }
+  if (editIndex !== null) {
+    reports[editIndex] = newReport;
+  } else {
+    reports.push(newReport);
+  }
   localStorage.setItem("psvReports", JSON.stringify(reports));
-  alert("Report Saved!");
+  alert("✅ Report Saved!");
   formPage.classList.add("hidden");
   dashboard.classList.remove("hidden");
   renderReports();
 });
 
+// ✅ View/Edit Report
 function viewReport(index) {
   editIndex = index;
   fillForm(reports[index]);
@@ -38,6 +59,7 @@ function viewReport(index) {
   dashboard.classList.add("hidden");
 }
 
+// ✅ Delete Report
 function deleteReport(index) {
   if (confirm("Delete this report?")) {
     reports.splice(index, 1);
@@ -46,11 +68,13 @@ function deleteReport(index) {
   }
 }
 
+// ✅ Back to Dashboard
 document.getElementById("backBtn").addEventListener("click", () => {
   formPage.classList.add("hidden");
   dashboard.classList.remove("hidden");
 });
 
+// ✅ Get Form Data
 function getFormData() {
   return {
     bookNo: bookNo.value, slNo: slNo.value, date: date.value, time: time.value, unit: unit.value,
@@ -64,15 +88,21 @@ function getFormData() {
   };
 }
 
+// ✅ Fill Form for Edit
 function fillForm(data) {
-  for (let key in data) {if (document.getElementById(key)) {document.getElementById(key).value = data[key];}}
+  for (let key in data) {
+    if (document.getElementById(key)) {
+      document.getElementById(key).value = data[key];
+    }
+  }
 }
 
+// ✅ Clear Form for New Entry
 function clearForm() {
   document.querySelectorAll("#formPage input, #formPage select").forEach(el => el.value = "");
 }
 
-/// ✅ Excel Bulk Upload (Improved)
+// ✅ Excel Bulk Upload (Improved)
 document.getElementById("excelUploadInput").addEventListener("change", handleExcelUpload);
 
 function handleExcelUpload(event) {
@@ -124,7 +154,7 @@ function handleExcelUpload(event) {
         signDate: row.signDate || ""
       };
 
-      // ✅ (Optional) Prevent Duplicate by Tag No
+      // ✅ Optional Duplicate Prevention (Uncomment if needed)
       // if (!reports.some(r => r.tagNo === newReport.tagNo)) {
       reports.push(newReport);
       uploadedCount++;
@@ -134,8 +164,18 @@ function handleExcelUpload(event) {
     localStorage.setItem("psvReports", JSON.stringify(reports));
     renderReports();
     alert(`✅ Excel Bulk Upload Successful!\nTotal Reports: ${reports.length}\nNewly Uploaded: ${uploadedCount}`);
-    event.target.value = ""; // reset input
+    event.target.value = "";
   };
 
   reader.readAsArrayBuffer(file);
 }
+
+// ✅ Download Template Button
+document.getElementById("downloadTemplateBtn").addEventListener("click", () => {
+  const link = document.createElement("a");
+  link.href = "psv_bulk_template.xlsx"; // File should be in same folder as index.html
+  link.download = "psv_bulk_template.xlsx";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
