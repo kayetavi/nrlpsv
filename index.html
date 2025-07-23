@@ -52,16 +52,6 @@
   
   <div class="dashboard">
 
-    <!-- 🔍 PSV Search -->
-<div style="margin-bottom:15px;">
-  <input
-    type="text"
-    id="psvSearch"
-    placeholder="Search PSV (by Unit, Tag, etc.)..."
-    style="width:100%; padding:10px; font-size:14px; border:1px solid #ccc; border-radius:4px;"
-    onkeyup="filterPSV()"
-  />
-</div>
     
     <!-- Sidebar -->
     <div class="sidebar">
@@ -76,12 +66,24 @@
     </div>
 
     <!-- Main Content -->
-    <div class="main-content">
-      <h2 id="selectedUnit">Select a Unit</h2>
-      <div id="psvSection"></div>
-      <div id="tsvSection"></div>
-    </div>
+<div class="main-content">
+
+  <!-- 🔍 Correct Placement for PSV Search -->
+  <div style="margin-bottom:15px;">
+    <input
+      type="text"
+      id="psvSearch"
+      placeholder="Search PSV (by Unit, Tag, etc.)..."
+      style="width:100%; padding:10px; font-size:14px; border:1px solid #ccc; border-radius:4px;"
+      onkeyup="filterPSV()"
+    />
   </div>
+  
+  <h2 id="selectedUnit">Select a Unit</h2>
+  <div id="psvSection"></div>
+  <div id="tsvSection"></div>
+</div>
+</div> <!-- end of dashboard -->
 
   <!-- Modal -->
   <div id="psvModal" class="modal">
