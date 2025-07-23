@@ -29,7 +29,7 @@ body {
   display: flex;
   height: 100vh;
 }
-
+ 
 /* ✅ Sidebar */
 .sidebar {
   width: 240px;
