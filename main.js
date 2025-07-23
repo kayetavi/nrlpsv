@@ -101,3 +101,37 @@ function openCalibration() {
 
 // Initialize Dashboard
 loadUnits();
+
+
+// PSV/TSV Search Filter
+function filterPSV() {
+  const keyword = document.getElementById("psvSearch").value.toLowerCase();
+  const selectedUnit = document.getElementById("selectedUnit").innerText.split(" - ")[0];
+
+  if (!selectedUnit || selectedUnit === "Select a Unit") return;
+
+  const filteredPSVs = psvData.filter(p =>
+    p.unit === selectedUnit &&
+    p.psvNo.startsWith("PSV") &&
+    (
+      p.psvNo.toLowerCase().includes(keyword) ||
+      p.sp.toLowerCase().includes(keyword) ||
+      p.orifice.toLowerCase().includes(keyword) ||
+      p.type.toLowerCase().includes(keyword)
+    )
+  );
+
+  const filteredTSVs = psvData.filter(p =>
+    p.unit === selectedUnit &&
+    p.psvNo.startsWith("TSV") &&
+    (
+      p.psvNo.toLowerCase().includes(keyword) ||
+      p.sp.toLowerCase().includes(keyword) ||
+      p.orifice.toLowerCase().includes(keyword) ||
+      p.type.toLowerCase().includes(keyword)
+    )
+  );
+
+  document.getElementById("psvSection").innerHTML = createTable(filteredPSVs, "PSV");
+  document.getElementById("tsvSection").innerHTML = createTable(filteredTSVs, "TSV");
+}
