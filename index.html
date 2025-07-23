@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PSV/TSV Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f0f0f0; }
+    .dashboard { display: flex; height: 100vh; }
+    .sidebar {
+      width: 250px; background: #2f4050; color: white; padding: 15px; overflow-y: auto;
+    }
+    .sidebar h2 { margin-top: 0; }
+    .sidebar input { width: 100%; padding: 8px; border: none; margin-bottom: 10px; border-radius: 4px; }
+    .main-content {
+      flex: 1; padding: 20px; overflow-y: auto;
+    }
+    .modal {
+      position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background: white; padding: 20px; border-radius: 8px; width: 400px;
+    }
+    .close {
+      float: right; font-size: 24px; cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <div class="dashboard">
-    <!-- ✅ Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
       <h2>Units</h2>
-      <input type="text" id="searchBox" placeholder="Search Unit..." onkeyup="searchUnit()">
-      <ul id="unitList"></ul>
+      <input type="text" id="searchBox" placeholder="Search Unit..." onkeyup="searchUnit()" />
+      <ul id="unitList" style="list-style:none; padding-left:0;"></ul>
 
-      <!-- ✅ New Calibration Tab -->
-      <hr style="border:0.5px solid #555; margin:10px 0;">
-      <li onclick="openCalibration()" style="background:#1ab394; text-align:center; cursor:pointer; padding:10px; border-radius:4px;">
+      <hr style="border:0.5px solid #888; margin:10px 0;" />
+      <li onclick="openCalibration()" style="background:#1ab394; text-align:center; cursor:pointer; padding:10px; border-radius:4px; list-style:none;">
         🛠 Calibration Reports
       </li>
     </div>
 
-    <!-- ✅ Main Content -->
+    <!-- Main Content -->
     <div class="main-content">
       <h2 id="selectedUnit">Select a Unit</h2>
       <div id="psvSection"></div>
@@ -29,7 +50,7 @@
     </div>
   </div>
 
-  <!-- ✅ Modal -->
+  <!-- Modal -->
   <div id="psvModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
@@ -43,118 +64,8 @@
     </div>
   </div>
 
-<script>
-// ✅ PSV + TSV Data
-const psvData = [
-  { psvNo: "PSV-1101", unit: "HCU", cdsp: "-", sp: "85 psi", bp: "-", orifice: '3/4"', type: "Open Bonnet" },
-  { psvNo: "TSV-1201", unit: "HCU", cdsp: "8 kg/cm²", sp: "100 psi", bp: "-", orifice: '1"', type: "Closed Bonnet" },
-  { psvNo: "PSV-2101", unit: "CDU", cdsp: "7 kg/cm²", sp: "90 psi", bp: "-", orifice: '1"', type: "Closed Bonnet" },
-  { psvNo: "TSV-2201", unit: "CDU", cdsp: "9 kg/cm²", sp: "110 psi", bp: "Yes", orifice: '1.5"', type: "Open Bonnet" },
-  { psvNo: "PSV-3101", unit: "CPP", cdsp: "10 kg/cm²", sp: "120 psi", bp: "Yes", orifice: '1.5"', type: "Pilot Operated" }
-];
-
-// ✅ Load Units in Sidebar with Count Badge
-function loadUnits() {
-  const unitList = document.getElementById("unitList");
-  unitList.innerHTML = "";
-
-  const uniqueUnits = [...new Set(psvData.map(p => p.unit))];
-  uniqueUnits.forEach(unit => {
-    const totalCount = psvData.filter(p => p.unit === unit).length;
-    const li = document.createElement("li");
-    li.style.cssText = "background:#394b5a; padding:10px; margin-bottom:5px; border-radius:4px; color:white; display:flex; justify-content:space-between; cursor:pointer;";
-    li.innerHTML = `<span>🏭 ${unit}</span> <span style="background:#1ab394; padding:3px 8px; border-radius:50%; font-size:12px;">${totalCount}</span>`;
-    li.onclick = () => showPSVs(unit);
-    unitList.appendChild(li);
-  });
-}
-
-// ✅ Show PSV & TSV Separately
-function showPSVs(unit) {
-  document.getElementById("selectedUnit").innerText = `${unit} - PSV/TSV List`;
-
-  const psvs = psvData.filter(p => p.unit === unit && p.psvNo.startsWith("PSV"));
-  const tsvs = psvData.filter(p => p.unit === unit && p.psvNo.startsWith("TSV"));
-
-  document.getElementById("psvSection").innerHTML = createTable(psvs, "PSV");
-  document.getElementById("tsvSection").innerHTML = createTable(tsvs, "TSV");
-}
-
-// ✅ Create Table (Dynamic)
-function createTable(data, type) {
-  if (data.length === 0) return "";
-  const headerColor = type === "PSV" ? "#007BFF" : "#FF9800";
-
-  let html = `<div style="margin-bottom:20px;">
-                <div style="background:${headerColor}; color:white; padding:8px; font-weight:bold; border-radius:5px 5px 0 0;">
-                  ${type} List
-                </div>
-                <table style="width:100%; border-collapse:collapse; background:white;">
-                  <tr style="background:#f1f1f1;">
-                    <th style="padding:8px; border:1px solid #ddd;">${type} No</th>
-                    <th style="padding:8px; border:1px solid #ddd;">SP</th>
-                    <th style="padding:8px; border:1px solid #ddd;">Orifice</th>
-                    <th style="padding:8px; border:1px solid #ddd;">Type</th>
-                  </tr>`;
-
-  data.forEach(item => {
-    html += `<tr onclick="openModal('${item.psvNo}')" style="cursor:pointer;">
-               <td style="padding:8px; border:1px solid #ddd;">${item.psvNo}</td>
-               <td style="padding:8px; border:1px solid #ddd;">${item.sp}</td>
-               <td style="padding:8px; border:1px solid #ddd;">${item.orifice}</td>
-               <td style="padding:8px; border:1px solid #ddd;">${item.type}</td>
-             </tr>`;
-  });
-
-  html += `</table></div>`;
-  return html;
-}
-
-// ✅ Search Units
-function searchUnit() {
-  const value = document.getElementById("searchBox").value.toLowerCase();
-  const unitList = document.getElementById("unitList");
-  unitList.innerHTML = "";
-
-  const filteredUnits = [...new Set(psvData.map(p => p.unit))].filter(u =>
-    u.toLowerCase().includes(value)
-  );
-
-  filteredUnits.forEach(unit => {
-    const totalCount = psvData.filter(p => p.unit === unit).length;
-    const li = document.createElement("li");
-    li.style.cssText = "background:#394b5a; padding:10px; margin-bottom:5px; border-radius:4px; color:white; display:flex; justify-content:space-between; cursor:pointer;";
-    li.innerHTML = `<span>🏭 ${unit}</span> <span style="background:#1ab394; padding:3px 8px; border-radius:50%; font-size:12px;">${totalCount}</span>`;
-    li.onclick = () => showPSVs(unit);
-    unitList.appendChild(li);
-  });
-}
-
-// ✅ Modal
-function openModal(psvNo) {
-  const psv = psvData.find(p => p.psvNo === psvNo);
-  document.getElementById("modalTitle").innerText = psv.psvNo;
-  document.getElementById("modalUnit").innerText = psv.unit;
-  document.getElementById("modalCDSP").innerText = psv.cdsp;
-  document.getElementById("modalSP").innerText = psv.sp;
-  document.getElementById("modalBP").innerText = psv.bp;
-  document.getElementById("modalOrifice").innerText = psv.orifice;
-  document.getElementById("modalType").innerText = psv.type;
-  document.getElementById("psvModal").style.display = "block";
-}
-
-function closeModal() {
-  document.getElementById("psvModal").style.display = "none";
-}
-
-// ✅ Open Calibration Reports Page
-function openCalibration() {
-  window.location.href = "calibration.html";  // Opens in same tab
-  // window.open("calibration.html", "_blank"); // Use this for new tab
-}
-
-// ✅ Init
-loadUnits();
-</script>
+  <!-- Scripts -->
+  <script src="psvData.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
