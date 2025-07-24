@@ -135,9 +135,9 @@ tr:hover {
   cursor: pointer;
 }
 
-/* ✅ Modal Overlay - Always Centered */
+/* ✅ MODAL OVERLAY */
 .modal {
-  display: none; /* Show via JS: modal.style.display = 'flex' */
+  display: none;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -146,63 +146,61 @@ tr:hover {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* ✅ Square Modal Box */
+/* ✅ MODAL BOX */
 .modal-content {
-  background: #fff;
-  padding: 30px;
+  background: white;
+  padding: 25px;
   border-radius: 12px;
-  width: 90vw;
-  height: 90vh; /* ✅ Square shape */
+  width: 85vw;
+  height: 85vh;
   max-width: 1000px;
-  max-height: 1000px;
-  overflow-y: auto;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-  position: relative;
-  font-family: 'Segoe UI', sans-serif;
-  animation: fadeIn 0.3s ease-in-out;
-
+  max-height: 800px;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  gap: 30px;
+  gap: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* ✅ Close Button */
+/* ✅ CLOSE BUTTON */
 .close {
   position: absolute;
   top: 15px;
   right: 20px;
-  font-size: 30px;
-  color: #555;
+  font-size: 28px;
+  color: #333;
   cursor: pointer;
 }
 .close:hover {
   color: #e53935;
 }
 
-/* ✅ Left Image Side */
+/* ✅ LEFT SIDE IMAGE */
 .modal-content img {
   flex: 0 0 300px;
   width: 300px;
   height: auto;
-  max-height: 85vh;
+  max-height: 100%;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   object-fit: contain;
 }
 
-/* ✅ Right Text Side */
+/* ✅ RIGHT SIDE TEXT */
 .modal-text {
   flex: 1;
+  overflow-y: auto;
   font-size: 16px;
   line-height: 1.6;
-  overflow-y: auto;
-  max-height: 85vh;
+  color: #333;
 }
 
+/* ✅ HEADER IN MODAL TEXT */
 .modal-text h2 {
   font-size: 24px;
   color: #1a237e;
@@ -211,29 +209,28 @@ tr:hover {
   padding-bottom: 5px;
 }
 
-/* ✅ Mobile Responsive */
+/* ✅ RESPONSIVE STACKING */
 @media (max-width: 768px) {
   .modal-content {
     flex-direction: column;
     width: 95vw;
-    height: 95vh;
+    height: auto;
   }
 
   .modal-content img {
     width: 100%;
-    max-width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    max-height: none;
   }
 
   .modal-text {
-    max-height: unset;
+    max-height: none;
     overflow-y: visible;
   }
 }
 
-/* ✅ Fade-In Animation */
+/* ✅ FADE IN */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
-    }
+}
