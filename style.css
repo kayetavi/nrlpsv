@@ -156,18 +156,18 @@ tr:hover {
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  width: 95vw;               /* ✅ FULL SCREEN WIDTH */
-  height: auto;
-  max-height: 90vh;          /* ✅ Scroll only if needed */
+  width: 95vw;                /* ✅ Full width */
+  max-width: 1600px;          /* ✅ Desktop large width */
+  max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
   position: relative;
   font-family: 'Segoe UI', sans-serif;
   animation: fadeIn 0.3s ease-in-out;
 
-  display: grid;
-  grid-template-columns: 30% 1fr; /* ✅ Left image 30%, right text full */
-  gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
 }
 
 /* ✅ Close Button */
@@ -183,19 +183,17 @@ tr:hover {
 
 /* ✅ Image */
 .modal-content img {
-  width: 100%;
-  height: auto;
+  flex: 0 0 350px;            /* ✅ Fixed image width */
+  max-width: 350px;
   max-height: 500px;
   border-radius: 8px;
   border: 1px solid #ddd;
   object-fit: contain;
 }
 
-/* ✅ Text Side */
+/* ✅ Text Right Side */
 .modal-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex: 1;                    /* ✅ Take remaining width */
   font-size: 18px;
   line-height: 1.6;
   word-wrap: break-word;
@@ -210,10 +208,14 @@ tr:hover {
   padding-bottom: 5px;
 }
 
+/* ✅ Mobile Responsive */
 @media (max-width: 900px) {
   .modal-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     width: 95%;
   }
+  .modal-content img {
+    max-width: 100%;
+    height: auto;
+  }
 }
-
