@@ -94,8 +94,8 @@ function openModal(psvNo) {
 
   document.getElementById("modalTitle").innerText = psv.psvNo;
   document.getElementById("modalUnit").innerText = psv.unit;
-  document.getElementById("modalCDSP").innerText = `Cold Differential Test Pressure (CDSP): ${formatPressure(psv.cdsp)}`;
-  document.getElementById("modalSP").innerText = `Set Pressure (SP): ${formatPressure(psv.sp)}`;
+  document.getElementById("modalCDSP").innerText = `Cold Differential Test Pressure: ${formatPressure(psv.cdsp)}`;
+  document.getElementById("modalSP").innerText = `Set Pressure: ${formatPressure(psv.sp)}`;
   document.getElementById("modalBP").innerText = psv.bp;
   document.getElementById("modalOrifice").innerText = psv.orifice;
   document.getElementById("modalType").innerText = psv.type;
