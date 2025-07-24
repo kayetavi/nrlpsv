@@ -135,30 +135,29 @@ tr:hover {
   cursor: pointer;
 }
 
-/* ✅ Replace Old Modal Code With This */
-
-/* ✅ Modal Overlay */
+/* ✅ Modal Overlay - Always Centered */
 .modal {
-  display: none;
+  display: none; /* Show via JS: modal.style.display = 'flex' */
+  justify-content: center;
+  align-items: center;
   position: fixed;
   z-index: 9999;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-/* ✅ FULL SCREEN WIDE MODAL */
+/* ✅ Square Modal Box */
 .modal-content {
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  width: 95vw;                /* ✅ Full width */
-  max-width: 1600px;          /* ✅ Desktop large width */
-  max-height: 90vh;
+  width: 90vw;
+  height: 90vh; /* ✅ Square shape */
+  max-width: 1000px;
+  max-height: 1000px;
   overflow-y: auto;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
   position: relative;
@@ -166,6 +165,7 @@ tr:hover {
   animation: fadeIn 0.3s ease-in-out;
 
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   gap: 30px;
 }
@@ -179,29 +179,32 @@ tr:hover {
   color: #555;
   cursor: pointer;
 }
-.close:hover { color: #e53935; }
+.close:hover {
+  color: #e53935;
+}
 
-/* ✅ Image */
+/* ✅ Left Image Side */
 .modal-content img {
-  flex: 0 0 350px;            /* ✅ Fixed image width */
-  max-width: 350px;
-  max-height: 500px;
+  flex: 0 0 300px;
+  width: 300px;
+  height: auto;
+  max-height: 85vh;
   border-radius: 8px;
   border: 1px solid #ddd;
   object-fit: contain;
 }
 
-/* ✅ Text Right Side */
+/* ✅ Right Text Side */
 .modal-text {
-  flex: 1;                    /* ✅ Take remaining width */
-  font-size: 18px;
+  flex: 1;
+  font-size: 16px;
   line-height: 1.6;
-  word-wrap: break-word;
-  white-space: normal;
+  overflow-y: auto;
+  max-height: 85vh;
 }
 
 .modal-text h2 {
-  font-size: 28px;
+  font-size: 24px;
   color: #1a237e;
   margin-bottom: 10px;
   border-bottom: 2px solid #eee;
@@ -209,13 +212,28 @@ tr:hover {
 }
 
 /* ✅ Mobile Responsive */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .modal-content {
     flex-direction: column;
-    width: 95%;
+    width: 95vw;
+    height: 95vh;
   }
+
   .modal-content img {
+    width: 100%;
     max-width: 100%;
     height: auto;
+    margin-bottom: 20px;
+  }
+
+  .modal-text {
+    max-height: unset;
+    overflow-y: visible;
   }
 }
+
+/* ✅ Fade-In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+    }
