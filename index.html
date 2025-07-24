@@ -88,18 +88,27 @@
 
 <!-- Modal -->
 <div id="psvModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modalImage" src="images/default.jpg" alt="PSV Type Image" />
-    <div class="modal-text">
-      <h2 id="modalTitle"></h2>
-      <p><strong>Unit:</strong> <span id="modalUnit"></span></p>
-      <p><strong>CDSP:</strong> <span id="modalCDSP"></span></p>
-      <p><strong>SP:</strong> <span id="modalSP"></span></p>
-      <p><strong>BP:</strong> <span id="modalBP"></span></p>
-      <p><strong>Orifice:</strong> <span id="modalOrifice"></span></p>
-      <p><strong>Type:</strong> <span id="modalType"></span></p>
+  <div class="modal-content" style="display: flex; flex-direction: row; gap: 20px; max-width: 90%; width: 900px; padding: 30px;">
+    
+    <!-- Left Side: Image -->
+    <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+      <img id="modalImage" src="images/default.jpg" alt="PSV Type Image" style="max-width: 100%; max-height: 80vh; border-radius: 8px;" />
     </div>
+
+    <!-- Right Side: Text -->
+    <div style="flex: 1; overflow-y: auto; max-height: 80vh;">
+      <span class="close" onclick="closeModal()" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
+      <div class="modal-text">
+        <h2 id="modalTitle">Namaste</h2>
+        <p><strong>Unit:</strong> <span id="modalUnit">Example Unit</span></p>
+        <p><strong>CDSP:</strong> <span id="modalCDSP">XX</span></p>
+        <p><strong>SP:</strong> <span id="modalSP">XX</span></p>
+        <p><strong>BP:</strong> <span id="modalBP">XX</span></p>
+        <p><strong>Orifice:</strong> <span id="modalOrifice">XX</span></p>
+        <p><strong>Type:</strong> <span id="modalType">XX</span></p>
+      </div>
+    </div>
+
   </div>
 </div>
 
