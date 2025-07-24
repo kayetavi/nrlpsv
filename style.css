@@ -25,7 +25,7 @@ body {
   background: #f4f7fa;
 }
 
-.dashboard {
+.dashboard { 
   display: flex;
   height: 100vh;
 }
