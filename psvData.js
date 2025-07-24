@@ -3,7 +3,7 @@ const psvData = [
   { psvNo: "TSV-1201", unit: "HCU", cdsp: "8 kg/cm²", sp: "100 kg/cm2", bp: "-", orifice: '1"', type: "Closed Bonnet" },
   { psvNo: "PSV-2101", unit: "CDU", cdsp: "7 kg/cm²", sp: "90 kg/cm2", bp: "-", orifice: '1"', type: "Closed Bonnet" },
   { psvNo: "TSV-2201", unit: "CDU", cdsp: "9 kg/cm²", sp: "110 kg/cm2", bp: "Yes", orifice: '1.5"', type: "Open Bonnet" },
-  { psvNo: "PSV-3101", unit: "CPP", cdsp: "10 kg/cm²", sp: "120 kg/cm2", bp: "Yes", orifice: '1.5"', type: "Pilot Operated" },
+  { psvNo: "PSV-3101", unit: "CPP", cdsp: "10 kg/cm² (Cold Differential Set Pressure)", sp: "120 kg/cm2 (Set Pressure)", bp: "Yes", orifice: '1.5"', type: "Pilot Operated" },
 
   { psvNo: "04-PSV-001", unit: "HCU", cdsp: "-", sp: "0.35 kg/cm2", bp: "-", orifice: "-", type: "Conventional" },
   { psvNo: "04-PSV-003", unit: "HCU", cdsp: "3", sp: "3 kg/cm2", bp: "-", orifice: '1.5"x2.5"', type: "Conventional" },
