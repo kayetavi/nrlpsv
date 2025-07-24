@@ -151,14 +151,14 @@ tr:hover {
   align-items: center;
 }
 
-/* ✅ Full-Wide Modal */
+/* ✅ FULL SCREEN WIDE MODAL */
 .modal-content {
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  width: 98%;               /* ✅ Full screen */
-  max-width: 98vw;          /* ✅ Instead of 1400px */
-  max-height: 95vh;
+  width: 95vw;               /* ✅ FULL SCREEN WIDTH */
+  height: auto;
+  max-height: 90vh;          /* ✅ Scroll only if needed */
   overflow-y: auto;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
   position: relative;
@@ -166,10 +166,9 @@ tr:hover {
   animation: fadeIn 0.3s ease-in-out;
 
   display: grid;
-  grid-template-columns: 500px 1fr; /* ✅ Left 500px image, right takes rest */
-  gap: 30px;
+  grid-template-columns: 30% 1fr; /* ✅ Left image 30%, right text full */
+  gap: 20px;
 }
-
 
 /* ✅ Close Button */
 .close {
@@ -180,31 +179,27 @@ tr:hover {
   color: #555;
   cursor: pointer;
 }
-.close:hover {
-  color: #e53935;
-}
+.close:hover { color: #e53935; }
 
 /* ✅ Image */
 .modal-content img {
   width: 100%;
   height: auto;
-  max-height: 600px;
+  max-height: 500px;
   border-radius: 8px;
   border: 1px solid #ddd;
   object-fit: contain;
 }
 
-/* ✅ Text Right Side */
+/* ✅ Text Side */
 .modal-text {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 8px;
   font-size: 18px;
   line-height: 1.6;
-
-  word-wrap: break-word;  /* ✅ Fixed */
-  white-space: normal;    /* ✅ Fixed */
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .modal-text h2 {
@@ -217,9 +212,8 @@ tr:hover {
 
 @media (max-width: 900px) {
   .modal-content {
-    grid-template-columns: 1fr; /* ✅ Mobile-friendly */
-  }
-  .modal-content img {
-    max-height: 300px;
+    grid-template-columns: 1fr;
+    width: 95%;
   }
 }
+
