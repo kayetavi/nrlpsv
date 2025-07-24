@@ -56,7 +56,7 @@ function createTable(data, type) {
                   </tr>`;
 
   data.forEach(item => {
-    html += `<tr onclick="openModalWithDelay('${item.psvNo}')" style="cursor:pointer;">`;
+    html += `<tr onclick="openModalWithDelay('${item.psvNo}')" style="cursor:pointer;">
                <td style="padding:8px; border:1px solid #ddd;">${item.psvNo}</td>
                <td style="padding:8px; border:1px solid #ddd;">${formatPressure(item.sp)}</td>
                <td style="padding:8px; border:1px solid #ddd;">${item.orifice}</td>
