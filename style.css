@@ -155,9 +155,9 @@ tr:hover {
 .modal-content {
   background: #fff;
   padding: 30px;
-  border-radius: 10px;
-  width: 95%;             /* ✅ Wide: 95% of screen */
-  max-width: 1400px;      /* ✅ Large A4 style width */
+  border-radius: 12px;
+  width: 95%;
+  max-width: 1200px;  /* ✅ Bada width */
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
@@ -165,20 +165,46 @@ tr:hover {
   font-family: 'Segoe UI', sans-serif;
   animation: fadeIn 0.3s ease-in-out;
 
-  display: grid;          /* ✅ Grid for better layout */
-  grid-template-columns: 400px 1fr;  /* ✅ Left image big, right text flexible */
-  gap: 30px;
-  align-items: start;
+  display: flex;        /* ✅ Proper two-column */
+  gap: 40px;
+  align-items: flex-start;
 }
 
-/* ✅ Big PSV Image */
+/* ✅ Left Image Big */
 .modal-content img {
-  width: 100%;
-  max-width: 380px;
+  flex-shrink: 0;
+  width: 350px;
+  max-width: 350px;
   max-height: 500px;
   border-radius: 8px;
   object-fit: contain;
   border: 1px solid #ddd;
+}
+
+/* ✅ Right Text Box Properly Aligned */
+.modal-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-text h2 {
+  font-size: 26px;
+  color: #1a237e;
+  margin: 0 0 10px 0;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 6px;
+}
+
+.modal-text p {
+  font-size: 16px;
+  margin: 2px 0;
+  line-height: 1.5;
+}
+
+.modal-text strong {
+  color: #333;
 }
 
 /* ✅ Close Button */
