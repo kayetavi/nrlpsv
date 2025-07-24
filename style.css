@@ -152,25 +152,28 @@ tr:hover {
   background: #fff;
   padding: 24px;
   border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
-  max-height: 80vh;
+  width: 95%;          /* ✅ Screen ke 95% width tak */
+  max-width: 700px;    /* ✅ 500 se badha ke 700px */
+  max-height: 90vh;    /* ✅ Zyada height allow */
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   position: relative;
   font-family: 'Segoe UI', sans-serif;
   animation: fadeIn 0.3s ease-in-out;
   display: flex;
-  gap: 15px;
+  gap: 20px;           /* ✅ Image aur text ke beech space */
+  align-items: flex-start;
 }
 
+
 .modal-content img {
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 200px;    /* ✅ Pehle 120 tha, badha ke 200 */
+  max-height: 200px;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain; /* ✅ Properly fit ho */
   border: 1px solid #ddd;
 }
+
 
 .close {
   position: absolute;
