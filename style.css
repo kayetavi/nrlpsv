@@ -215,20 +215,24 @@ tr:hover {
     flex-direction: column;
     width: 95vw;
     height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 15px;
   }
 
   .modal-content img {
     width: 100%;
     height: auto;
-    max-height: none;
+    max-height: 300px;
+    object-fit: contain;
   }
 
   .modal-text {
     max-height: none;
     overflow-y: visible;
+    font-size: 16px;
   }
 }
-
 /* ✅ FADE IN */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
