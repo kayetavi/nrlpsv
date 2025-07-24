@@ -160,3 +160,15 @@ function filterPSV() {
   document.getElementById("psvSection").innerHTML = createTable(filteredPSVs, "PSV");
   document.getElementById("tsvSection").innerHTML = createTable(filteredTSVs, "TSV");
 }
+
+
+// ✅ Spinner + Modal Function
+function openModalWithDelay(psvNo) {
+  const spinner = document.getElementById("spinner");
+  spinner.style.display = "flex"; // Show spinner
+
+  setTimeout(() => {
+    spinner.style.display = "none"; // Hide spinner
+    openModal(psvNo); // Show modal after delay
+  }, 1000); // Delay in milliseconds (1000ms = 1s)
+}
