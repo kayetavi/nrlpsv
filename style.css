@@ -135,109 +135,64 @@ tr:hover {
   cursor: pointer;
 }
 
-/* ✅ MODAL OVERLAY */
+/* ✅ Basic Modal Overlay */
 .modal {
-  display: none;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
-  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent black background */
+  display: none; /* Hide by default */
+  justify-content: center;
+  align-items: center;
 }
 
-/* ✅ MODAL BOX */
+/* ✅ Modal Content Box - Full Page Responsive */
 .modal-content {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
+  background-color: #fff;
+  width: 90vw;
+  max-width: 1000px;
   height: 90vh;
-  width: 90vh; /* Width = Height */
+  padding: 30px;
+  overflow-y: auto;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: row;
-  gap: 25px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  position: relative;
-  animation: fadeIn 0.3s ease-in-out;
-}
-/* ✅ CLOSE BUTTON */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  color: #333;
-  cursor: pointer;
-}
-.close:hover {
-  color: #e53935;
+  gap: 30px;
 }
 
-/* ✅ LEFT SIDE IMAGE */
+/* ✅ Image Styling */
 .modal-content img {
-  flex: 0 0 300px;
-  width: 300px;
+  max-width: 300px;
   height: auto;
-  max-height: 100%;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
   object-fit: contain;
 }
 
-/* ✅ RIGHT SIDE TEXT */
+/* ✅ Text Content Styling */
 .modal-text {
   flex: 1;
-  overflow-y: auto;
+  font-family: Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.6;
   color: #333;
+  overflow-y: auto;
 }
 
-/* ✅ MODAL TEXT HEADER */
-.modal-text h2 {
-  font-size: 24px;
-  color: #1a237e;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 5px;
+/* ✅ Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-/* ✅ RESPONSIVE STACKING */
-@media (max-width: 768px) {
-  .modal-content {
-    flex-direction: column;
-    width: 95vw;
-    height: auto;
-    max-height: 90vh;
-    padding: 15px;
-  }
-
-  .modal-content img {
-    width: 100%;
-    max-height: 300px;
-  }
-
-  .modal-text {
-    width: 100%;
-    max-height: none;
-    overflow-y: visible;
-    font-size: 15px;
-  }
-}
-
-/* ✅ FADE IN ANIMATION */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.close:hover {
+  color: red;
 }
