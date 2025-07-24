@@ -92,6 +92,7 @@ function searchUnit() {
 // Modal Logic
 function openModal(psvNo) {
   const psv = psvData.find(p => p.psvNo === psvNo);
+
   document.getElementById("modalTitle").innerText = psv.psvNo;
   document.getElementById("modalUnit").innerText = psv.unit;
   document.getElementById("modalCDSP").innerText = `Cold Differential Test Pressure (CDSP): ${formatPressure(psv.cdsp)}`;
@@ -99,8 +100,13 @@ function openModal(psvNo) {
   document.getElementById("modalBP").innerText = psv.bp;
   document.getElementById("modalOrifice").innerText = psv.orifice;
   document.getElementById("modalType").innerText = psv.type;
+
+  // ✅ PSV Image (make sure you have <img id="modalImage"> in HTML)
+  document.getElementById("modalImage").src = `images/${psv.psvNo}.jpg`;
+
   document.getElementById("psvModal").style.display = "flex";
 }
+
 
 function closeModal() {
   document.getElementById("psvModal").style.display = "none";
