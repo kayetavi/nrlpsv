@@ -79,4 +79,3 @@ const psvData = [
   { psvNo: "04-PSV-1771", unit: "HCU", cdsp: "19.8", sp: "19.8 psi", bp: "1.7", orifice: "1.5G2.5", type: "Balanced Bellow" }
 ];
 
- ];
