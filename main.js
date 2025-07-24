@@ -102,17 +102,16 @@ function openModal(psvNo) {
   document.getElementById("modalType").innerText = psv.type;
 
   // ✅ Image Based on Type
-  const typeImage = `images/${psv.type.toLowerCase()}.jpg`;
-  const modalImage = document.getElementById("modalImage");
-  modalImage.src = typeImage;
-
-  // ✅ If image not found, load default
-  modalImage.onerror = function () {
-    this.src = "images/default.jpg";
+  const typeImage = {
+    "Conventional": "images/conventional.jpg",
+    "Balanced Bellow": "images/balanced-bellow.jpg",
+    "Pilot Operated": "images/pilot-operated.jpg"
   };
+  document.getElementById("modalImage").src = typeImage[psv.type] || "images/default.jpg";
 
   document.getElementById("psvModal").style.display = "flex";
 }
+
 
 
 
