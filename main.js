@@ -139,4 +139,3 @@ document.getElementById("psvSection").innerHTML = createTable(filteredPSVs, "PSV
 document.getElementById("tsvSection").innerHTML = createTable(filteredTSVs, "TSV");
 }
 
-
