@@ -1,3 +1,14 @@
+// ✅ Default kg/cm² Append Function
+function formatPressure(value) {
+  if (!value || value === "-" || value.toLowerCase().includes("atm")) return value;
+  if (!value.toLowerCase().includes("kg/cm")) {
+    return value + " kg/cm²";
+  }
+  return value;
+}
+
+
+
 // Load Units in Sidebar
 function loadUnits() {
   const unitList = document.getElementById("unitList");
@@ -47,7 +58,7 @@ function createTable(data, type) {
   data.forEach(item => {
     html += `<tr onclick="openModal('${item.psvNo}')" style="cursor:pointer;">
                <td style="padding:8px; border:1px solid #ddd;">${item.psvNo}</td>
-               <td style="padding:8px; border:1px solid #ddd;">${item.sp}</td>
+               <td style="padding:8px; border:1px solid #ddd;">${formatPressure(item.sp)}</td>
                <td style="padding:8px; border:1px solid #ddd;">${item.orifice}</td>
                <td style="padding:8px; border:1px solid #ddd;">${item.type}</td>
              </tr>`;
@@ -83,8 +94,8 @@ function openModal(psvNo) {
   const psv = psvData.find(p => p.psvNo === psvNo);
   document.getElementById("modalTitle").innerText = psv.psvNo;
   document.getElementById("modalUnit").innerText = psv.unit;
-  document.getElementById("modalCDSP").innerText = psv.cdsp;
-  document.getElementById("modalSP").innerText = psv.sp;
+  document.getElementById("modalCDSP").innerText = formatPressure(psv.cdsp);
+  document.getElementById("modalSP").innerText = formatPressure(psv.sp);
   document.getElementById("modalBP").innerText = psv.bp;
   document.getElementById("modalOrifice").innerText = psv.orifice;
   document.getElementById("modalType").innerText = psv.type;
