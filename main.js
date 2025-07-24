@@ -19,12 +19,13 @@ function loadUnits() {
 function showPSVs(unit) {
   document.getElementById("selectedUnit").innerText = `${unit} - PSV/TSV List`;
 
-  const psvs = psvData.filter(p => p.unit === unit && p.psvNo.startsWith("PSV"));
-  const tsvs = psvData.filter(p => p.unit === unit && p.psvNo.startsWith("TSV"));
+  const psvs = psvData.filter(p => p.unit === unit && p.psvNo.toUpperCase().includes("PSV"));
+  const tsvs = psvData.filter(p => p.unit === unit && p.psvNo.toUpperCase().includes("TSV"));
 
   document.getElementById("psvSection").innerHTML = createTable(psvs, "PSV");
   document.getElementById("tsvSection").innerHTML = createTable(tsvs, "TSV");
 }
+
 
 // Create PSV/TSV Table
 function createTable(data, type) {
@@ -112,7 +113,7 @@ function filterPSV() {
 
   const filteredPSVs = psvData.filter(p =>
     p.unit === selectedUnit &&
-    p.psvNo.startsWith("PSV") &&
+    p.psvNo.toUpperCase().includes("PSV") &&
     (
       p.psvNo.toLowerCase().includes(keyword) ||
       p.sp.toLowerCase().includes(keyword) ||
@@ -123,7 +124,7 @@ function filterPSV() {
 
   const filteredTSVs = psvData.filter(p =>
     p.unit === selectedUnit &&
-    p.psvNo.startsWith("TSV") &&
+    p.psvNo.toUpperCase().includes("TSV") &&
     (
       p.psvNo.toLowerCase().includes(keyword) ||
       p.sp.toLowerCase().includes(keyword) ||
