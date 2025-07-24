@@ -1,11 +1,5 @@
 const psvData = [
-  { psvNo: "PSV-1101", unit: "HCU", "Cold Differential Test Pressure: "-", Set Pressure: "85 kg/cm2", bp: "-", orifice: '3/4"', type: "Open Bonnet" },
-  { psvNo: "TSV-1201", unit: "HCU", "Cold Differential Test Pressure: "8 kg/cm²", Set Pressure: "100 kg/cm2", bp: "-", orifice: '1"', type: "Closed Bonnet" },
-  { psvNo: "PSV-2101", unit: "CDU", "Cold Differential Test Pressure: "7 kg/cm²", Set Pressure: "90 kg/cm2", bp: "-", orifice: '1"', type: "Closed Bonnet" },
-  { psvNo: "TSV-2201", unit: "CDU", "Cold Differential Test Pressure: "9 kg/cm²", Set Pressure: "110 kg/cm2", bp: "Yes", orifice: '1.5"', type: "Open Bonnet" },
-  { psvNo: "PSV-3101", unit: "CPP", "Cold Differential Test Pressure: "10 kg/cm²", Set Pressure: "120 kg/cm2", bp: "Yes", orifice: '1.5"', type: "Pilot Operated" },
-
- [
+ 
   { "psvNo": "04-PSV-001", "unit": "HCU", "cdsp": "-", "sp": "0.35 kg/cm2", "bp": "-", "orifice": "-", "type": "Conventional" },
   { "psvNo": "04-PSV-003", "unit": "HCU", "cdsp": "3", "sp": "3 kg/cm2", "bp": "-", "orifice": "1.5\"x2.5\"", "type": "Conventional" },
   { "psvNo": "04-PSV-0061", "unit": "HCU", "cdsp": "-", "sp": "198 kg/cm2", "bp": "1.5\"x2\"", "orifice": "-", "type": "Conventional" },
@@ -196,7 +190,6 @@ const psvData = [
   { "psvNo": "04-PSV-9603", "unit": "HCU", "Cold Differential Test Pressure": "16.6", "Set Pressure": "18 kg/cm2", "bp": "Atm", "orifice": "1.5H3", "type": "Open Bonnet" },
   { "psvNo": "04-PSV-9604", "unit": "HCU", "Cold Differential Test Pressure": "17.5", "Set Pressure": "17 kg/cm2", "bp": "0-1.7", "orifice": "4L6", "type": "Balanced Bellow" },
   { "psvNo": "04-PSV-9603 (Set Pressureare)", "unit": "HCU", "Cold Differential Test Pressure": "18.53", "Set Pressure": "18 kg/cm2", "bp": "-", "orifice": "1.5H3", "type": "Open Bonnet" }
-
 ];
 
 
