@@ -101,11 +101,19 @@ function openModal(psvNo) {
   document.getElementById("modalOrifice").innerText = psv.orifice;
   document.getElementById("modalType").innerText = psv.type;
 
-  // ✅ PSV Image (make sure you have <img id="modalImage"> in HTML)
-  document.getElementById("modalImage").src = `images/${psv.psvNo}.jpg`;
+  // ✅ Image Based on Type
+  const typeImage = `images/${psv.type.toLowerCase()}.jpg`;
+  const modalImage = document.getElementById("modalImage");
+  modalImage.src = typeImage;
+
+  // ✅ If image not found, load default
+  modalImage.onerror = function () {
+    this.src = "images/default.jpg";
+  };
 
   document.getElementById("psvModal").style.display = "flex";
 }
+
 
 
 function closeModal() {
