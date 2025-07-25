@@ -124,23 +124,31 @@ button:hover {
 /* ================================================================
    ✅ PSV DASHBOARD STYLES (Fullscreen & Scroll Fixed)
 ==================================================================*/
+/* ✅ Global Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* ✅ Lock global scroll */
+  box-sizing: border-box;
+}
+
 /* ✅ Dashboard Page Lock */
 body.dashboard-page {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   background: #f4f7fa;
+  display: flex;
   width: 100vw;
   height: 100vh;
-  overflow: hidden; /* ✅ No body scroll */
 }
 
 /* ✅ Dashboard Wrapper */
 .dashboard {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden; /* ✅ Lock entire screen */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* ✅ No extra scroll */
 }
 
 /* ✅ Sidebar */
@@ -149,14 +157,14 @@ body.dashboard-page {
   background: #2f4050;
   color: white;
   padding: 15px;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto; /* ✅ Sidebar can scroll */
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
 }
 
 .sidebar h2 {
   text-align: center;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
 }
 
 #searchBox {
@@ -206,8 +214,8 @@ body.dashboard-page {
 .main-content {
   flex: 1;
   padding: 20px;
-  height: 100vh;
-  overflow-y: auto; /* ✅ Scroll only inside main content */
+  height: 100%;
+  overflow-y: auto; /* ✅ Scroll only inside content */
   background: #f4f7fa;
   box-sizing: border-box;
 }
