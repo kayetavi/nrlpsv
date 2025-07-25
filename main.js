@@ -93,6 +93,7 @@ function searchUnit() {
 }
 
 // Modal Logic
+// Modal Logic
 function openModal(psvNo) {
   const loader = document.getElementById("modalLoader");
   const modalContent = document.querySelector("#psvModal .modal-content");
@@ -101,6 +102,7 @@ function openModal(psvNo) {
   loader.style.display = "flex";
   modalContent.style.display = "none";
   document.getElementById("psvModal").style.display = "flex";
+  document.body.style.overflow = "hidden";  // ✅ Lock background scroll
 
   // ✅ Delay to simulate loading effect (2 seconds)
   setTimeout(() => {
@@ -127,10 +129,11 @@ function openModal(psvNo) {
   }, 2000);
 }
 
-
 function closeModal() {
   document.getElementById("psvModal").style.display = "none";
+  document.body.style.overflow = "auto";  // ✅ Unlock background scroll
 }
+
 
 // Calibration Redirect
 function openCalibration() {
