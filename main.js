@@ -127,8 +127,6 @@ function openModal(psvNo) {
   }, 2000);
 }
 
-  document.getElementById("psvModal").style.display = "flex";
-}
 
 function closeModal() {
   document.getElementById("psvModal").style.display = "none";
