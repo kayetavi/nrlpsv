@@ -130,7 +130,8 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* ✅ Lock global scroll */
+  max-width: 100%;  /* ✅ No side gap */
+  overflow: hidden; /* ✅ No global scroll */
   box-sizing: border-box;
 }
 
@@ -139,16 +140,16 @@ body.dashboard-page {
   font-family: Arial, sans-serif;
   background: #f4f7fa;
   display: flex;
-  width: 100vw;
+  width: 100%;  /* ✅ instead of 100vw */
   height: 100vh;
 }
 
 /* ✅ Dashboard Wrapper */
 .dashboard {
   display: flex;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* ✅ No extra scroll */
+  width: 100%;  /* ✅ instead of 100vw */
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* ✅ Sidebar */
