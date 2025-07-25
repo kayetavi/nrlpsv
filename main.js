@@ -98,11 +98,11 @@ function openModal(psvNo) {
   const modalContent = document.querySelector("#psvModal .modal-content");
 
   // ✅ Show loader & hide modal content initially
-  loader.style.display = "block";
+  loader.style.display = "flex";
   modalContent.style.display = "none";
   document.getElementById("psvModal").style.display = "flex";
 
-  // ✅ Delay to simulate loading effect (0.8 seconds)
+  // ✅ Delay to simulate loading effect (2 seconds)
   setTimeout(() => {
     const psv = psvData.find(p => p.psvNo === psvNo);
 
@@ -114,7 +114,6 @@ function openModal(psvNo) {
     document.getElementById("modalOrifice").innerText = psv.orifice;
     document.getElementById("modalType").innerText = psv.type;
 
-    // ✅ Image Based on Type
     const typeImage = {
       "Conventional": "images/conventional.jpg",
       "Balanced Bellow": "images/balanced-bellow.jpg",
@@ -125,7 +124,7 @@ function openModal(psvNo) {
     // ✅ Hide loader & show modal content
     loader.style.display = "none";
     modalContent.style.display = "flex";
-  }, 2000); // Adjust time as you like (ms)
+  }, 2000);
 }
 
   document.getElementById("psvModal").style.display = "flex";
