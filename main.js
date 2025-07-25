@@ -94,23 +94,39 @@ function searchUnit() {
 
 // Modal Logic
 function openModal(psvNo) {
-  const psv = psvData.find(p => p.psvNo === psvNo);
+  const loader = document.getElementById("modalLoader");
+  const modalContent = document.querySelector("#psvModal .modal-content");
 
-  document.getElementById("modalTitle").innerText = psv.psvNo;
-  document.getElementById("modalUnit").innerText = psv.unit;
-  document.getElementById("modalCDSP").innerText = `Cold Differential Test Pressure: ${formatPressure(psv.cdsp)}`;
-  document.getElementById("modalSP").innerText = `Set Pressure: ${formatPressure(psv.sp)}`;
-  document.getElementById("modalBP").innerText = psv.bp;
-  document.getElementById("modalOrifice").innerText = psv.orifice;
-  document.getElementById("modalType").innerText = psv.type;
+  // ✅ Show loader & hide modal content initially
+  loader.style.display = "block";
+  modalContent.style.display = "none";
+  document.getElementById("psvModal").style.display = "flex";
 
-  // ✅ Image Based on Type
-  const typeImage = {
-    "Conventional": "images/conventional.jpg",
-    "Balanced Bellow": "images/balanced-bellow.jpg",
-    "Pilot Operated": "images/pilot-operated.jpg"
-  };
-  document.getElementById("modalImage").src = typeImage[psv.type] || "images/default.jpg";
+  // ✅ Delay to simulate loading effect (0.8 seconds)
+  setTimeout(() => {
+    const psv = psvData.find(p => p.psvNo === psvNo);
+
+    document.getElementById("modalTitle").innerText = psv.psvNo;
+    document.getElementById("modalUnit").innerText = psv.unit;
+    document.getElementById("modalCDSP").innerText = `Cold Differential Test Pressure: ${formatPressure(psv.cdsp)}`;
+    document.getElementById("modalSP").innerText = `Set Pressure: ${formatPressure(psv.sp)}`;
+    document.getElementById("modalBP").innerText = psv.bp;
+    document.getElementById("modalOrifice").innerText = psv.orifice;
+    document.getElementById("modalType").innerText = psv.type;
+
+    // ✅ Image Based on Type
+    const typeImage = {
+      "Conventional": "images/conventional.jpg",
+      "Balanced Bellow": "images/balanced-bellow.jpg",
+      "Pilot Operated": "images/pilot-operated.jpg"
+    };
+    document.getElementById("modalImage").src = typeImage[psv.type] || "images/default.jpg";
+
+    // ✅ Hide loader & show modal content
+    loader.style.display = "none";
+    modalContent.style.display = "flex";
+  }, 800); // Adjust time as you like (ms)
+}
 
   document.getElementById("psvModal").style.display = "flex";
 }
