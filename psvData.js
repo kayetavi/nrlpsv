@@ -193,7 +193,47 @@ const psvData = [
   { "psvNo": "04-PSV-9602", "unit": "HCU", "cdsp": "18.5", "sp": "18 kg/cm2", "bp": "Atm", "orifice": "1.5H3", "type": "Open Bonnet" },
   { "psvNo": "04-PSV-9603", "unit": "HCU", "cdsp": "16.6", "sp": "18 kg/cm2", "bp": "Atm", "orifice": "1.5H3", "type": "Open Bonnet" },
   { "psvNo": "04-PSV-9604", "unit": "HCU", "cdsp": "17.5", "sp": "17 kg/cm2", "bp": "0-1.7", "orifice": "4L6", "type": "Balanced Bellow" },
-  { "psvNo": "04-PSV-9603 (Spare)", "unit": "HCU", "cdsp": "18.53", "sp": "18 kg/cm2", "bp": "-", "orifice": "1.5H3", "type": "Open Bonnet" }
+  { "psvNo": "04-PSV-9603 (Spare)", "unit": "HCU", "cdsp": "18.53", "sp": "18 kg/cm2", "bp": "-", "orifice": "1.5H3", "type": "Open Bonnet" },
+
+
+  { psvNo: "01-PSV-1101", unit: "CDU", cdsp: "16.3", sp: "14 psi", bp: "4", orifice: '6Q8', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1102", unit: "CDU", cdsp: "16.32", sp: "14 psi", bp: "4", orifice: '6"x8"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1201", unit: "CDU", cdsp: "5.71", sp: "5.6 psi", bp: "1.7", orifice: '4P6', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1202", unit: "CDU", cdsp: "5.71", sp: "5.6 psi", bp: "1.7", orifice: '4P6', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1401", unit: "CDU", cdsp: "6.5", sp: "6.5 psi", bp: "0", orifice: '6Q8', type: "Open Bonnet" },
+  { psvNo: "01-PSV-1402", unit: "CDU", cdsp: "6.2", sp: "6.2 psi", bp: "Atm", orifice: '6"x8"', type: "Open Bonnet" },
+  { psvNo: "01-PSV-1501", unit: "CDU", cdsp: "4.5", sp: "4.5 psi", bp: "", orifice: '8"X10"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1502", unit: "CDU", cdsp: "4.5", sp: "4.5 psi", bp: "", orifice: '8"X10"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1503", unit: "CDU", cdsp: "4.5", sp: "4.5 psi", bp: "", orifice: '', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1601", unit: "CDU", cdsp: "4.5", sp: "4.5 psi", bp: "1.7", orifice: '4"X6"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1602", unit: "CDU", cdsp: "4.5", sp: "4.5 psi", bp: "1.7", orifice: '4"X6"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1603", unit: "CDU", cdsp: "4.5", sp: "4.5 psi", bp: "1.7", orifice: '', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1604", unit: "CDU", cdsp: "4.5", sp: "4.5 psi", bp: "1.7", orifice: '1.5E2', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1701", unit: "CDU", cdsp: "15.3", sp: "15 psi", bp: "1.7", orifice: '4M6', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1702", unit: "CDU", cdsp: "15.3", sp: "15 psi", bp: "1.7", orifice: '4M6', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1703", unit: "CDU", cdsp: "15", sp: "15 psi", bp: "1.7", orifice: '2J3', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1704", unit: "CDU", cdsp: "15", sp: "15 psi", bp: "1.7", orifice: '2J3', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1801", unit: "CDU", cdsp: "29", sp: "29 psi", bp: "1.7", orifice: '2H3', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1802", unit: "CDU", cdsp: "29", sp: "29 psi", bp: "1.7", orifice: '2"x3"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1803", unit: "CDU", cdsp: "29", sp: "29 psi", bp: "1.7", orifice: '2H3', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1804", unit: "CDU", cdsp: "29", sp: "29 psi", bp: "1.7", orifice: '2H3', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-1805", unit: "CDU", cdsp: "27.3", sp: "29 psi", bp: "", orifice: '1E2', type: "Conventional" },
+  { psvNo: "01-PSV-1806", unit: "CDU", cdsp: "29", sp: "29 psi", bp: "1.7", orifice: '', type: "Conventional" },
+  { psvNo: "01-PSV-2001", unit: "CDU", cdsp: "6.5", sp: "6.5 psi", bp: "Atm", orifice: '4P6', type: "Open Bonnet" },
+  { psvNo: "01-PSV-2002", unit: "CDU", cdsp: "6.5", sp: "6.5 psi", bp: "Atm", orifice: '4P6', type: "Open Bonnet" },
+  { psvNo: "01-PSV-2101", unit: "CDU", cdsp: "3.57", sp: "3.5 psi", bp: "1.7", orifice: '8J10', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-2102", unit: "CDU", cdsp: "3.57", sp: "3.5 psi", bp: "", orifice: '8"X10"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-2103", unit: "CDU", cdsp: "3.57", sp: "3.5 psi", bp: "", orifice: '8"X10"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-2701", unit: "CDU", cdsp: "8", sp: "8 psi", bp: "Atm", orifice: '4"X6"', type: "Open Bonnet" },
+  { psvNo: "01-PSV-2702", unit: "CDU", cdsp: "8", sp: "8 psi", bp: "Atm", orifice: '4"X6"', type: "Open Bonnet" },
+  { psvNo: "01-PSV-2801", unit: "CDU", cdsp: "6", sp: "6 psi", bp: "1.7", orifice: '1.5G2.5', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-2802", unit: "CDU", cdsp: "6", sp: "6 psi", bp: "1.7", orifice: '1.5G2.5', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-5301", unit: "CDU", cdsp: "15", sp: "15 psi", bp: "0-1.7", orifice: '1.5"X3"', type: "Balanced Bellow" },
+  { psvNo: "01-PSV-5302", unit: "CDU", cdsp: "15", sp: "15 psi", bp: "0-1.7", orifice: '1.5"X3"', type: "Balanced Bellow" },
+  { psvNo: "CPP-CDALES-01B (01-PSV-2301B)", unit: "CDU", cdsp: "10", sp: "10 psi", bp: "-", orifice: '-', type: "Conventional" },
+  { psvNo: "Stop Oil Coaleser SV (01-PSV-2301A)", unit: "CDU", cdsp: "10", sp: "10 psi", bp: "-", orifice: '-', type: "Conventional" },
+  { psvNo: "01-PSV-2901", unit: "CDU", cdsp: "12.5", sp: "12.5 psi", bp: "-", orifice: '1.5"F2"', type: "Conventional" }
+
 
 ];
 
