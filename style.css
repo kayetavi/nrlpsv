@@ -124,6 +124,7 @@ button:hover {
 /* ================================================================
    ✅ PSV DASHBOARD STYLES (Fullscreen & Scroll Fixed)
 ==================================================================*/
+/* ✅ Dashboard Page Lock */
 body.dashboard-page {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -134,10 +135,12 @@ body.dashboard-page {
   overflow: hidden; /* ✅ No body scroll */
 }
 
+/* ✅ Dashboard Wrapper */
 .dashboard {
   display: flex;
   width: 100vw;
   height: 100vh;
+  overflow: hidden; /* ✅ Lock entire screen */
 }
 
 /* ✅ Sidebar */
@@ -146,9 +149,9 @@ body.dashboard-page {
   background: #2f4050;
   color: white;
   padding: 15px;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: auto; /* ✅ Sidebar can scroll */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
 }
 
 .sidebar h2 {
@@ -167,6 +170,7 @@ body.dashboard-page {
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
@@ -202,8 +206,10 @@ body.dashboard-page {
 .main-content {
   flex: 1;
   padding: 20px;
-  overflow-y: auto; /* ✅ Scroll only inside content */
   height: 100vh;
+  overflow-y: auto; /* ✅ Scroll only inside main content */
+  background: #f4f7fa;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -259,7 +265,6 @@ tr:hover {
   border-bottom: 2px solid #ddd;
 }
 
-
 /* ✅ Modal Background */
 .modal {
   display: none;
@@ -274,7 +279,7 @@ tr:hover {
   padding: 40px 20px;
 }
 
-/* ✅ Modal Content Wrapper */
+/* ✅ Modal Content */
 .modal-content {
   background: #fff;
   max-width: 960px;
@@ -344,7 +349,7 @@ tr:hover {
   }
 }
 
-/* ✅ Loading effect */
+/* ✅ Loading Effect */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -364,7 +369,7 @@ tr:hover {
   display: none;
 }
 
-/* ✅ Scroll Lock when modal open */
+/* ✅ Lock Scroll When Modal Open */
 body.modal-open {
   overflow: hidden;
   height: 100vh;
