@@ -259,6 +259,11 @@ tr:hover {
   display: none;
 }
 
+/* ✅ Scroll Lock for main dashborad Modal */
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
 
 
 
