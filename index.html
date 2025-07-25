@@ -5,28 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PSV/TSV Dashboard</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f0f0f0; }
-    .dashboard { display: flex; height: 100vh; }
-    .sidebar {
-      width: 250px; background: #2f4050; color: white; padding: 15px; overflow-y: auto;
-    }
-    .sidebar h2 { margin-top: 0; }
-    .sidebar input { width: 100%; padding: 8px; border: none; margin-bottom: 10px; border-radius: 4px; }
-    .main-content {
-      flex: 1; padding: 20px; overflow-y: auto;
-    }
-    .modal {
-      position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center;
-    }
-    .modal-content {
-      background: white; padding: 20px; border-radius: 8px; width: 400px;
-    }
-    .close {
-      float: right; font-size: 24px; cursor: pointer;
-    }
-  </style>
 </head>
 <body>
   
@@ -46,55 +24,47 @@
 
   <!-- 🔹 Right: Placeholder for future content -->
   <div style="flex:0 0 40px;"></div>
-
 </div>
 
-  
-  <div class="dashboard">
+<div class="dashboard">
 
-    
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <h2>Units</h2>
-      <input type="text" id="searchBox" placeholder="Search Unit..." onkeyup="searchUnit()" />
-      <ul id="unitList" style="list-style:none; padding-left:0;"></ul>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Units</h2>
+    <input type="text" id="searchBox" placeholder="Search Unit..." onkeyup="searchUnit()" />
+    <ul id="unitList" style="list-style:none; padding-left:0;"></ul>
 
-      <hr style="border:0.5px solid #888; margin:10px 0;" />
-      <li onclick="openCalibration()" style="background:#1ab394; text-align:center; cursor:pointer; padding:10px; border-radius:4px; list-style:none;">
-        🛠 Calibration Reports
-      </li>
-    </div>
-
-    <!-- Main Content -->
-<div class="main-content">
-
-  <!-- 🔍 Correct Placement for PSV Search -->
-   <div id="psvSearchContainer">
-    <input
-      type="text"
-      id="psvSearch"
-      placeholder="Search PSV (by Unit, Tag, etc.)..."
-      style="width:100%; padding:10px; font-size:14px; border:1px solid #ccc; border-radius:4px;"
-      onkeyup="filterPSV()"
-    />
+    <hr style="border:0.5px solid #888; margin:10px 0;" />
+    <li onclick="openCalibration()" style="background:#1ab394; text-align:center; cursor:pointer; padding:10px; border-radius:4px; list-style:none;">
+      🛠 Calibration Reports
+    </li>
   </div>
-  
-  <h2 id="selectedUnit">Select a Unit</h2>
-  <div id="psvSection"></div>
-  <div id="tsvSection"></div>
-</div>
-  
-  <!-- end of dashboard -->
 
+  <!-- Main Content -->
+  <div class="main-content">
+    <div id="psvSearchContainer">
+      <input
+        type="text"
+        id="psvSearch"
+        placeholder="Search PSV (by Unit, Tag, etc.)..."
+        style="width:100%; padding:10px; font-size:14px; border:1px solid #ccc; border-radius:4px;"
+        onkeyup="filterPSV()"
+      />
+    </div>
+    <h2 id="selectedUnit">Select a Unit</h2>
+    <div id="psvSection"></div>
+    <div id="tsvSection"></div>
+  </div>
+</div>
 
 <!-- Modal -->
 <div id="psvModal" class="modal">
 
-<!-- ✅ Loader (Newly Added) -->
+  <!-- ✅ Loader (Fixed Placement) -->
   <div id="modalLoader" style="
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     border: 6px solid #f3f3f3;
     border-top: 6px solid #007BFF;
@@ -105,8 +75,8 @@
     display: none;">
   </div>
 
-  
-  <div class="modal-content" style="display: flex; flex-direction: row; gap: 20px; max-width: 90%; width: 900px; padding: 30px;">
+  <!-- ✅ Modal Content (Default Hidden, JS will show after loading) -->
+  <div class="modal-content" style="display:none; flex-direction: row; gap: 20px; max-width: 90%; width: 900px; padding: 30px;">
     
     <!-- Left Side: Image -->
     <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
@@ -130,10 +100,8 @@
   </div>
 </div>
 
-
-  <!-- Scripts -->
-  <script src="psvData.js"></script>
-  <script src="main.js"></script>
-  
+<!-- Scripts -->
+<script src="psvData.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
