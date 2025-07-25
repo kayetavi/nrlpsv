@@ -95,19 +95,17 @@ function searchUnit() {
 // Modal Logic
 // Modal Logic
 function openModal(psvNo) {
+  document.body.classList.add("modal-open");  // ✅ Lock Scroll
+
   const loader = document.getElementById("modalLoader");
   const modalContent = document.querySelector("#psvModal .modal-content");
 
-  // ✅ Show loader & hide modal content initially
   loader.style.display = "flex";
   modalContent.style.display = "none";
   document.getElementById("psvModal").style.display = "flex";
-  document.body.style.overflow = "hidden";  // ✅ Lock background scroll
 
-  // ✅ Delay to simulate loading effect (2 seconds)
   setTimeout(() => {
     const psv = psvData.find(p => p.psvNo === psvNo);
-
     document.getElementById("modalTitle").innerText = psv.psvNo;
     document.getElementById("modalUnit").innerText = psv.unit;
     document.getElementById("modalCDSP").innerText = `Cold Differential Test Pressure: ${formatPressure(psv.cdsp)}`;
@@ -123,15 +121,14 @@ function openModal(psvNo) {
     };
     document.getElementById("modalImage").src = typeImage[psv.type] || "images/default.jpg";
 
-    // ✅ Hide loader & show modal content
     loader.style.display = "none";
     modalContent.style.display = "flex";
   }, 2000);
 }
 
 function closeModal() {
+  document.body.classList.remove("modal-open");  // ✅ Unlock Scroll
   document.getElementById("psvModal").style.display = "none";
-  document.body.style.overflow = "auto";  // ✅ Unlock background scroll
 }
 
 
