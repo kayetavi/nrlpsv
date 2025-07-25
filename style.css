@@ -135,6 +135,17 @@ tr:hover {
   cursor: pointer;
 }
 
+/* ✅ PSV/TSV Search Box Sticky */
+#psvSearchContainer {
+  position: sticky;        /* ✅ Sticks when scrolling */
+  top: 0;                  /* ✅ Always stays at top of scrollable area */
+  background: #f4f7fa;     /* ✅ Background to overlap table */
+  z-index: 10;             /* ✅ Stays above table rows */
+  padding: 10px 0;
+  border-bottom: 2px solid #ddd;
+}
+
+
 /* ✅ Modal Background */
 .modal {
   display: none;
