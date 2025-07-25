@@ -39,11 +39,14 @@ function showPSVs(unit) {
 function createTable(data, type) {
   if (data.length === 0) return "";
   const headerColor = type === "PSV" ? "#007BFF" : "#FF9800";
+  const totalCount = data.length; // ✅ Total count of PSV/TSV
 
   let html = `
     <div style="margin-bottom:20px;">
       <div style="background:${headerColor}; color:white; padding:8px; font-weight:bold; border-radius:5px 5px 0 0;">
-        ${type} List
+        ${type} List <span style="float:right; background:white; color:${headerColor}; padding:2px 8px; border-radius:12px; font-size:12px;">
+          Total: ${totalCount}
+        </span>
       </div>
       <table style="width:100%; border-collapse:collapse; background:white;">
         <tr style="background:#f1f1f1;">
@@ -66,6 +69,7 @@ function createTable(data, type) {
   html += `</table></div>`;
   return html;
 }
+
 
 // Search Units
 function searchUnit() {
