@@ -1,24 +1,143 @@
-/* ✅ GLOBAL RESET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
+/* ================================================================
+   ✅ CALIBRATION REPORT STYLES (Normal Page with A4 Layout)
+==================================================================*/
+body:not(.dashboard-page) {
   font-family: Arial, sans-serif;
-  background: #f4f7fa; /* ✅ Dashboard background */
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+  background: #f4f4f4;
+  padding: 20px;
 }
 
-/* ✅ Fullscreen Dashboard */
+.a4-container {
+  background: #fff;
+  width: 800px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #000;
+}
+
+.center {
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.header-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.details-table,
+.report-table,
+.footer-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+.details-table td,
+.report-table th,
+.report-table td,
+.footer-table td {
+  border: 1px solid #000;
+  padding: 4px;
+}
+
+.details-table input,
+.report-table input,
+.footer-table input,
+select {
+  width: 90%;
+  padding: 2px;
+  border: 1px solid #999;
+  font-size: 12px;
+}
+
+.report-table th {
+  background: #e0e0e0;
+  font-size: 12px;
+}
+
+button {
+  margin: 5px 3px;
+  padding: 8px 15px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #218838;
+}
+
+#addNewBtn {
+  background: #007bff;
+}
+
+#addNewBtn:hover {
+  background: #0056b3;
+}
+
+.bulk-label {
+  display: inline-block;
+  margin: 10px 0;
+  background: #ffc107;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #000;
+}
+
+.bulk-label input {
+  display: none;
+}
+
+.bulk-label:hover {
+  background: #e0a800;
+}
+
+.hidden {
+  display: none;
+}
+
+@media print {
+  button,
+  #dashboard {
+    display: none;
+  }
+  .a4-container {
+    width: 100%;
+    border: none;
+  }
+}
+
+
+/* ================================================================
+   ✅ PSV DASHBOARD STYLES (Fullscreen & Scroll Fixed)
+==================================================================*/
+body.dashboard-page {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f7fa;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* ✅ No body scroll */
+}
+
 .dashboard {
   display: flex;
   width: 100vw;
   height: 100vh;
-  overflow: hidden; /* ✅ No body scroll */
 }
 
 /* ✅ Sidebar */
@@ -29,7 +148,7 @@ body {
   padding: 15px;
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
   height: 100vh;
-  overflow-y: auto; /* ✅ Scroll only sidebar if too long */
+  overflow-y: auto;
 }
 
 .sidebar h2 {
@@ -83,7 +202,7 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  overflow-y: auto; /* ✅ Scroll inside main content */
+  overflow-y: auto; /* ✅ Scroll only inside content */
   height: 100vh;
 }
 
@@ -140,6 +259,7 @@ tr:hover {
   border-bottom: 2px solid #ddd;
 }
 
+
 /* ✅ Modal Background */
 .modal {
   display: none;
@@ -154,7 +274,7 @@ tr:hover {
   padding: 40px 20px;
 }
 
-/* ✅ Modal Content */
+/* ✅ Modal Content Wrapper */
 .modal-content {
   background: #fff;
   max-width: 960px;
@@ -206,22 +326,18 @@ tr:hover {
   font-weight: bold;
 }
 
-/* ✅ Responsive */
 @media (max-width: 768px) {
   .modal-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-
   .modal-content img {
     max-width: 100%;
   }
-
   .modal-text {
     width: 100%;
   }
-
   .close {
     top: 10px;
     right: 14px;
@@ -248,7 +364,7 @@ tr:hover {
   display: none;
 }
 
-/* ✅ Scroll Lock when Modal Open */
+/* ✅ Scroll Lock when modal open */
 body.modal-open {
   overflow: hidden;
   height: 100vh;
