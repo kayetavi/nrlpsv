@@ -125,7 +125,7 @@ function openModal(psvNo) {
     // ✅ Hide loader & show modal content
     loader.style.display = "none";
     modalContent.style.display = "flex";
-  }, 800); // Adjust time as you like (ms)
+  }, 2000); // Adjust time as you like (ms)
 }
 
   document.getElementById("psvModal").style.display = "flex";
