@@ -1,3 +1,4 @@
+
 // ✅ Default kg/cm² Append Function
 function formatPressure(value) {
   if (!value || value === "-" || value.toLowerCase().includes("atm")) return value;
@@ -123,7 +124,7 @@ function openModal(psvNo) {
 
     loader.style.display = "none";
     modalContent.style.display = "flex";
-  }, 2000);
+  }, 1000);
 }
 
 function closeModal() {
