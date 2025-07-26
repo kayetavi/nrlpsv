@@ -154,7 +154,8 @@ body.dashboard-page {
   display: flex;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* ✅ Lock global scroll */
+  overflow: hidden;
+  min-height: 0; /* ✅ Flex scroll fix */
 }
 
 /* ✅ Sidebar */
@@ -164,7 +165,8 @@ body.dashboard-page {
   color: white;
   padding: 15px;
   height: 100%;
-  overflow-y: auto; /* ✅ Sidebar ke andar scroll allowed */
+  min-height: 0; /* ✅ Flex scroll fix */
+  overflow-y: auto; /* ✅ Sidebar scroll allowed */
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
 }
 
@@ -217,10 +219,10 @@ body.dashboard-page {
 /* ✅ Main Content */
 .main-content {
   flex: 1;
-  overflow-y: auto; /* ✅ Main content ke andar scroll allowed */
+  overflow-y: auto; /* ✅ Main content scroll allowed */
   background: #f4f7fa;
   padding: 0;
-  min-height: 0; /* ✅ IMPORTANT for flex scroll fix */
+  min-height: 0; /* ✅ Flex scroll fix */
 }
 
 h2 {
