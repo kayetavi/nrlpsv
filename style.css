@@ -138,7 +138,7 @@ html, body {
   height: 100%;
   background: #f4f7fa;
   font-family: Arial, sans-serif;
-  /* overflow: hidden;  ✅ HATA DIYA */
+  overflow: hidden;  /* ✅ Global page lock wapas lagao */
 }
 
 
@@ -164,8 +164,7 @@ body.dashboard-page {
   color: white;
   padding: 15px;
   height: 100%;
-  overflow-y: auto; /* ✅ Only sidebar scrolls */
-  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  overflow-y: auto; /* ✅ Sidebar ke andar scroll allowed */
 }
 
 .sidebar h2 {
@@ -218,9 +217,9 @@ body.dashboard-page {
 .main-content {
   flex: 1;
   height: 100%;
-  overflow-y: auto; /* ✅ Scroll only in content */
+  overflow-y: auto; /* ✅ Main content ke andar scroll allowed */
   background: #f4f7fa;
-  padding: 0; /* ✅ Remove gap */
+  padding: 0;
 }
 
 h2 {
