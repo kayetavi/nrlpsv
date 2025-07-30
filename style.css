@@ -390,7 +390,7 @@ body.modal-open {
 
 
 /* ================================================================
-   ✅ MOBILE RESPONSIVE ADJUSTMENTS
+   ✅ MOBILE RESPONSIVE ADJUSTMENTS - UPDATED
 ==================================================================*/
 @media (max-width: 768px) {
   /* 📄 Calibration Report Page */
@@ -406,17 +406,21 @@ body.modal-open {
   select {
     width: 100%;
     font-size: 14px;
+    padding: 6px;
+    margin-bottom: 8px;
   }
 
   .report-table th,
   .report-table td {
     font-size: 13px;
+    padding: 6px;
   }
 
   button {
     width: 100%;
-    margin: 5px 0;
+    margin: 8px 0;
     font-size: 14px;
+    padding: 10px;
   }
 
   .bulk-label {
@@ -424,6 +428,7 @@ body.modal-open {
     display: block;
     width: 100%;
     text-align: center;
+    margin-bottom: 5px;
   }
 
   /* 📊 Dashboard Layout */
@@ -435,15 +440,30 @@ body.modal-open {
   .sidebar {
     width: 100%;
     height: auto;
-    box-shadow: none;
     padding: 10px;
     position: relative;
+    box-shadow: none;
     z-index: 10;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
   }
 
   .sidebar li {
     font-size: 14px;
-    padding: 8px;
+    padding: 10px;
+    flex: 1 0 45%;
+    text-align: center;
+    background: #fff;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
   }
 
   .main-content {
@@ -453,6 +473,7 @@ body.modal-open {
 
   .table-container {
     margin: 10px 0;
+    overflow-x: auto;
   }
 
   table,
@@ -480,6 +501,7 @@ body.modal-open {
     width: 100%;
     max-width: 100%;
     height: auto;
+    margin-top: 10px;
   }
 
   /* 🎛️ Sticky Search Fix */
