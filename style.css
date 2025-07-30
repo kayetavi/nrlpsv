@@ -387,3 +387,105 @@ body.modal-open {
   overflow: hidden;
   height: 100vh;
 }
+
+
+/* ================================================================
+   ✅ MOBILE RESPONSIVE ADJUSTMENTS
+==================================================================*/
+@media (max-width: 768px) {
+  /* 📄 Calibration Report Page */
+  .a4-container {
+    width: 100%;
+    padding: 15px;
+    border: none;
+  }
+
+  .details-table input,
+  .report-table input,
+  .footer-table input,
+  select {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .report-table th,
+  .report-table td {
+    font-size: 13px;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .bulk-label {
+    font-size: 13px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 📊 Dashboard Layout */
+  .dashboard {
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    padding: 10px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .sidebar li {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .main-content {
+    padding: 10px;
+    overflow: auto;
+  }
+
+  .table-container {
+    margin: 10px 0;
+  }
+
+  table,
+  th,
+  td {
+    font-size: 13px;
+  }
+
+  /* 📦 Modal Adjustments */
+  .modal-content {
+    flex-direction: column;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .modal-text h2 {
+    font-size: 20px;
+  }
+
+  .modal-text p {
+    font-size: 15px;
+  }
+
+  .modal-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 🎛️ Sticky Search Fix */
+  #psvSearchContainer {
+    position: relative;
+    top: auto;
+    padding: 10px;
+  }
+}
