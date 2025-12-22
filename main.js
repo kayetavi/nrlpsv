@@ -27,7 +27,9 @@ function loadUnits() {
 
 // Show PSV & TSV Tables
 function showPSVs(unit) {
-  document.getElementById("selectedUnit").innerText = `${unit} - PSV/TSV List`;
+  document.getElementById("welcomePanel").style.display = "none";
+
+   document.getElementById("selectedUnit").innerText = `${unit} - PSV/TSV List`;
 
   const psvs = psvData.filter(p => p.unit === unit && p.psvNo.toUpperCase().includes("PSV"));
   const tsvs = psvData.filter(p => p.unit === unit && p.psvNo.toUpperCase().includes("TSV"));
