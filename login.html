@@ -5,9 +5,12 @@
 <title>Login | PSV / TSV Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Firebase -->
+<!-- Firebase Core -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<!-- Firebase Config (External) -->
+<script src="api/firebase-config.js"></script>
 
 <style>
 body{
@@ -74,7 +77,6 @@ button{
   <input type="email" id="email" placeholder="Email">
   <input type="password" id="password" placeholder="Password">
 
-  <!-- Remember & Forgot -->
   <div class="options">
     <label>
       <input type="checkbox" id="rememberMe"> Remember Me
@@ -88,43 +90,38 @@ button{
 </div>
 
 <script>
-/* 🔥 FIREBASE CONFIG */
-const firebaseConfig = {
-  apiKey: "AIzaSyBblnVz1SYbUGHfrAeFKte0-s4dRwrNLKM",
-  authDomain: "mysite-project-77071.firebaseapp.com",
-  projectId: "mysite-project-77071",
-  appId: "1:53846467224:web:171ebaa2ae19ab1a9166ed"
-};
-
-firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 /* 🔁 Load remembered email */
 window.onload = () => {
   const savedEmail = localStorage.getItem("rememberEmail");
   if (savedEmail) {
-    document.getElementById("email").value = savedEmail;
-    document.getElementById("rememberMe").checked = true;
+    email.value = savedEmail;
+    rememberMe.checked = true;
   }
 };
 
 /* 🔐 Login */
 function login(){
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const remember = document.getElementById("rememberMe").checked;
+  const emailVal = email.value.trim();
+  const passwordVal = password.value;
+  const remember = rememberMe.checked;
   const msg = document.getElementById("message");
 
   msg.className = "error";
   msg.innerText = "";
 
-  auth.signInWithEmailAndPassword(email,password)
+  if(!emailVal || !passwordVal){
+    msg.innerText = "Email and password required.";
+    return;
+  }
+
+  auth.signInWithEmailAndPassword(emailVal, passwordVal)
     .then(()=>{
-      if (remember) {
-        localStorage.setItem("rememberEmail", email);
-      } else {
-        localStorage.removeItem("rememberEmail");
-      }
+      remember
+        ? localStorage.setItem("rememberEmail", emailVal)
+        : localStorage.removeItem("rememberEmail");
+
       window.location.href="index.html";
     })
     .catch(err=>{
@@ -134,15 +131,15 @@ function login(){
 
 /* 🔑 Forgot Password */
 function forgotPassword(){
-  const email = document.getElementById("email").value;
+  const emailVal = email.value.trim();
   const msg = document.getElementById("message");
 
-  if (!email) {
+  if (!emailVal) {
     msg.innerText = "Please enter your email first.";
     return;
   }
 
-  auth.sendPasswordResetEmail(email)
+  auth.sendPasswordResetEmail(emailVal)
     .then(()=>{
       msg.className = "success";
       msg.innerText = "Password reset email sent. Check your inbox.";
