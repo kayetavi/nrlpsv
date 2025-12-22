@@ -142,6 +142,7 @@ function openCalibration() {
 
 // Initialize Dashboard
 loadUnits();
+updateWelcomeStats();   // ✅ ADD THIS LINE
 
 // PSV/TSV Search Filter
 function filterPSV() {
@@ -172,6 +173,33 @@ function filterPSV() {
     )
   );
 
+  
   document.getElementById("psvSection").innerHTML = createTable(filteredPSVs, "PSV");
   document.getElementById("tsvSection").innerHTML = createTable(filteredTSVs, "TSV");
 }
+
+
+
+
+// ✅ Welcome Panel Auto Statistics Auto Count
+function updateWelcomeStats() {
+
+  // Total unique units
+  const units = [...new Set(psvData.map(p => p.unit))];
+  document.getElementById("totalUnits").innerText = units.length;
+
+  // Total PSV count
+  const totalPSV = psvData.filter(p =>
+    p.psvNo && p.psvNo.toUpperCase().includes("PSV")
+  ).length;
+  document.getElementById("totalPSV").innerText = totalPSV;
+
+  // Calibration Pending (safe check)
+  const pending = psvData.filter(p =>
+    p.calibrationStatus &&
+    p.calibrationStatus.toLowerCase() === "pending"
+  ).length;
+
+  document.getElementById("pendingCalibration").innerText = pending;
+}
+
