@@ -124,6 +124,12 @@ button:hover {
 /* ================================================================
    ✅ PSV DASHBOARD STYLES (Fullscreen & Scroll Fixed)
 ==================================================================*/
+:root {
+  --header-height: 60px;
+  --footer-height: 40px;
+}
+
+
 
 /* ✅ Full Universal Reset */
 * {
@@ -152,12 +158,15 @@ body.dashboard-page {
 
 /* ✅ Dashboard Wrapper */
 .dashboard {
-  display: flex;
+  position: fixed;
+  top: var(--header-height);
+  bottom: var(--footer-height);
+  left: 0;
   width: 100%;
-  height: calc(100vh - 100px); /* 60 header + 40 footer */
-  margin-top: 60px;           /* header height */
-  overflow: hidden;           /* ❌ dashboard scroll band */
+  display: flex;
+  overflow: hidden;   /* dashboard scroll ❌ */
 }
+
 
 
 /* ✅ Sidebar */
