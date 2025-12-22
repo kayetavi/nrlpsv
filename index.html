@@ -5,9 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PSV/TSV Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- 🔥 Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 </head>
 
-<body class="dashboard-page">  
+<body class="dashboard-page">
+
+<!-- 🔐 LOGIN PROTECTION -->
+<script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  auth.onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  });
+
+  function logout() {
+    firebase.auth().signOut().then(() => {
+      window.location.href = "login.html";
+    });
+  }
+</script>
 
 <!-- ================= HEADER ================= -->
 <div style="background:#1a237e; color:white; padding:10px 20px; display:flex; align-items:center; justify-content:space-between;">
@@ -23,8 +52,13 @@
     <div style="font-size:14px;">PSV / TSV Dashboard</div>
   </div>
 
-  <!-- Right Spacer -->
-  <div style="width:40px;"></div>
+  <!-- Right: Logout -->
+  <div>
+    <button onclick="logout()"
+      style="background:#e53935;color:white;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;">
+      Logout
+    </button>
+  </div>
 </div>
 
 <!-- ================= DASHBOARD ================= -->
@@ -60,34 +94,29 @@
 
     <h2 id="selectedUnit">Select a Unit</h2>
 
-    <!-- ===== WELCOME PANEL (DEFAULT VIEW) ===== -->
+    <!-- ===== WELCOME PANEL ===== -->
     <div id="welcomePanel" class="welcome-panel">
-
       <h1>Welcome to PSV / TSV Dashboard</h1>
-
       <p>
         Please select a unit from the left panel to view
         PSV & TSV details, inspection status and calibration records.
       </p>
 
       <div class="welcome-cards">
+        <div class="w-card">
+          <h3>Total Units</h3>
+          <span id="totalUnits">0</span>
+        </div>
 
         <div class="w-card">
-  <h3>Total Units</h3>
-  <span id="totalUnits">0</span>
-</div>
+          <h3>Total PSV</h3>
+          <span id="totalPSV">0</span>
+        </div>
 
-<div class="w-card">
-  <h3>Total PSV</h3>
-  <span id="totalPSV">0</span>
-</div>
-
-<div class="w-card">
-  <h3>Calibration Pending</h3>
-  <span id="pendingCalibration">0</span>
-</div>
-
-
+        <div class="w-card">
+          <h3>Calibration Pending</h3>
+          <span id="pendingCalibration">0</span>
+        </div>
       </div>
     </div>
 
@@ -101,7 +130,6 @@
 <!-- ================= MODAL ================= -->
 <div id="psvModal" class="modal">
 
-  <!-- Loader -->
   <div id="modalLoader" style="
     position:absolute;
     top:50%;
@@ -116,19 +144,14 @@
     display:none;">
   </div>
 
-  <!-- Modal Content -->
   <div class="modal-content" style="display:none; flex-direction:row; gap:20px; max-width:900px; width:90%; padding:30px;">
-
-    <!-- Image -->
     <div style="flex:1; display:flex; justify-content:center; align-items:center;">
       <img id="modalImage" src="images/default.jpg"
            style="max-width:100%; max-height:80vh; border-radius:8px;">
     </div>
 
-    <!-- Text -->
     <div style="flex:1; overflow-y:auto; max-height:80vh;">
       <span class="close" onclick="closeModal()" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
-
       <h2 id="modalTitle">PSV Details</h2>
       <p><strong>Unit:</strong> <span id="modalUnit"></span></p>
       <p><strong>CDSP:</strong> <span id="modalCDSP"></span></p>
@@ -137,7 +160,6 @@
       <p><strong>Orifice:</strong> <span id="modalOrifice"></span></p>
       <p><strong>Type:</strong> <span id="modalType"></span></p>
     </div>
-
   </div>
 </div>
 
