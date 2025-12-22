@@ -534,5 +534,8 @@ body.modal-open {
 .footer-right {
   text-align: right;
 }
+.dashboard {
+  padding-bottom: 45px;
+}
 
 
