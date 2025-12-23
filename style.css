@@ -605,6 +605,17 @@ body.modal-open {
     border-radius: 6px;
   }
 
+   /* Sidebar hidden by default */
+.sidebar {
+  display: none;
+}
+
+/* Sidebar visible when active */
+.sidebar.show {
+  display: block;
+}
+
+
   .main-content {
     padding: 10px;
     overflow: auto;
