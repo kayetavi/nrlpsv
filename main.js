@@ -143,8 +143,11 @@ function openCalibration() {
 }
 
 // Initialize Dashboard
-loadUnits();
-updateWelcomeStats();   // ✅ ADD THIS LINE
+document.addEventListener("DOMContentLoaded", () => {
+  loadUnits();
+  updateWelcomeStats();
+});
+
 
 // PSV/TSV Search Filter
 function filterPSV() {
