@@ -27,9 +27,6 @@ function loadUnits() {
 
 // Show PSV & TSV Tables
 function showPSVs(unit) {
-
-  document.getElementById("psvSearchBox").style.display = "none";
-
   document.getElementById("welcomePanel").style.display = "none";
 
    document.getElementById("selectedUnit").innerText = `${unit} - PSV/TSV List`;
@@ -204,19 +201,5 @@ function updateWelcomeStats() {
   ).length;
 
   document.getElementById("pendingCalibration").innerText = pending;
-}
-
-
-function toggleSearch() {
-  const box = document.getElementById("psvSearchBox");
-
-  if (box.style.display === "none" || box.style.display === "") {
-    box.style.display = "block";
-    document.getElementById("psvSearch").focus();
-  } else {
-    box.style.display = "none";
-    document.getElementById("psvSearch").value = "";
-    filterPSV(); // reset table
-  }
 }
 
