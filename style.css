@@ -2,10 +2,6 @@
    Welcome Panel
 ================================ */
 
-/* ===============================
-   Welcome Panel
-================================ */
-
 .welcome-panel {
   margin-top: 0;
   text-align: center;
@@ -100,6 +96,16 @@
   font-size: 28px;
   font-weight: bold;
   color: #007BFF;
+}
+
+.w-card.clickable {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.w-card.clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* ===============================
@@ -673,6 +679,9 @@ body.modal-open {
 .footer-right {
   text-align: right;
 }
+
+
+
 
 
 
