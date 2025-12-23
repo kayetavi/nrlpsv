@@ -64,8 +64,7 @@
 <!-- ================= DASHBOARD ================= -->
 <div class="dashboard">
 
-
-<!-- ================= SIDEBAR ================= -->
+  <!-- ================= SIDEBAR ================= -->
   <div class="sidebar">
     <h2>Units</h2>
     <input type="text" id="searchBox" placeholder="Search Unit..." onkeyup="searchUnit()" />
@@ -79,6 +78,21 @@
     </li>
   </div>
 
+  <!-- ================= MAIN CONTENT ================= -->
+  <div class="main-content">
+
+    <!-- Search -->
+    <div id="psvSearchContainer">
+      <input
+        type="text"
+        id="psvSearch"
+        placeholder="Search PSV (by Unit, Tag, etc.)..."
+        onkeyup="filterPSV()"
+        style="width:100%; padding:10px; font-size:14px; border:1px solid #ccc; border-radius:4px;"
+      />
+    </div>
+
+    <h2 id="selectedUnit">Select a Unit</h2>
 
     <!-- ===== WELCOME PANEL ===== -->
     <div id="welcomePanel" class="welcome-panel">
@@ -89,26 +103,15 @@
       </p>
 
       <div class="welcome-cards">
-        <div class="w-card clickable" onclick="openUnitSidebar()">
-  <h3>Total Units</h3>
-  <span id="totalUnits">0</span>
-</div>
+        <div class="w-card">
+          <h3>Total Units</h3>
+          <span id="totalUnits">0</span>
+        </div>
 
-
-        <div class="w-card clickable" onclick="showOnlyPSV()">
-    <h3>Total PSV</h3>
-    <span id="totalPSV">0</span>
-  </div>
-
-  <div class="w-card clickable" onclick="showOnlyTSV()">
-    <h3>Total TSV</h3>
-    <span id="totalTSV">0</span>
-  </div>
-
-  <div class="w-card clickable" onclick="showAllValves()">
-    <h3>Total PSV / TSV</h3>
-    <span id="totalAll">0</span>
-  </div>
+        <div class="w-card">
+          <h3>Total PSV</h3>
+          <span id="totalPSV">0</span>
+        </div>
 
         <div class="w-card">
           <h3>Calibration Pending</h3>
