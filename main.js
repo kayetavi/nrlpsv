@@ -27,6 +27,8 @@ function loadUnits() {
 
 // Show PSV & TSV Tables
 function showPSVs(unit) {
+
+  document.querySelector(".sidebar").classList.add("show"); // ✅ ensure visible
   document.getElementById("welcomePanel").style.display = "none";
 
    document.getElementById("selectedUnit").innerText = `${unit} - PSV/TSV List`;
@@ -253,5 +255,10 @@ function showAllValves() {
 
   document.getElementById("psvSection").innerHTML = createTable(psvs, "PSV");
   document.getElementById("tsvSection").innerHTML = createTable(tsvs, "TSV");
+}
+
+function openUnitSidebar() {
+  const sidebar = document.querySelector(".sidebar");
+  sidebar.classList.add("show");
 }
 
