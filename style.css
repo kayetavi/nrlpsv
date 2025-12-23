@@ -689,23 +689,5 @@ body.modal-open {
   text-align: right;
 }
 
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
 
-.home-btn {
-  font-size: 20px;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 6px;
-  background: #1a237e;
-  color: white;
-}
-
-.home-btn:hover {
-  background: #3949ab;
-}
 
