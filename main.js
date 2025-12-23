@@ -143,11 +143,8 @@ function openCalibration() {
 }
 
 // Initialize Dashboard
-document.addEventListener("DOMContentLoaded", () => {
-  loadUnits();
-  updateWelcomeStats();
-});
-
+loadUnits();
+updateWelcomeStats();   // ✅ ADD THIS LINE
 
 // PSV/TSV Search Filter
 function filterPSV() {
@@ -265,19 +262,4 @@ function openUnitSidebar() {
   sidebar.classList.add("show");
 }
 
-
-function goHome() {
-  // Show welcome panel
-  document.getElementById("welcomePanel").style.display = "block";
-
-  // Clear selected unit text
-  document.getElementById("selectedUnit").innerText = "Select a Unit";
-
-  // Hide PSV / TSV sections
-  document.getElementById("psvSection").innerHTML = "";
-  document.getElementById("tsvSection").innerHTML = "";
-
-  // Clear search
-  document.getElementById("psvSearch").value = "";
-}
 
