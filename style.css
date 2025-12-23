@@ -2,8 +2,12 @@
    Welcome Panel
 ================================ */
 
+/* ===============================
+   Welcome Panel
+================================ */
+
 .welcome-panel {
-  margin-top: 30px;
+  margin-top: 0;
   text-align: center;
 
   /* Background image */
@@ -17,18 +21,26 @@
   border-radius: 12px;
   position: relative;
   width: 100%;
-  min-height: 65vh;
+
+  /* Height control (header + footer gap avoid) */
+  min-height: calc(100vh - 220px);
 
   /* Text */
   color: #ffffff;
 
-  /* Center content vertically */
+  /* Center content */
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  /* Background animation */
+  animation: bgZoom 20s ease-in-out infinite alternate;
 }
 
-/* Overlay for text readability */
+/* ===============================
+   Overlay for readability
+================================ */
+
 .welcome-panel::before {
   content: "";
   position: absolute;
@@ -75,7 +87,7 @@
   background: rgba(255, 255, 255, 0.95);
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .w-card h3 {
@@ -90,14 +102,19 @@
   color: #007BFF;
 }
 
-.welcome-panel {
-  animation: bgZoom 20s ease-in-out infinite alternate;
-}
+/* ===============================
+   Background Zoom Animation
+================================ */
 
 @keyframes bgZoom {
-  from { background-size: 100%; }
-  to { background-size: 110%; }
+  from {
+    background-size: 100%;
+  }
+  to {
+    background-size: 110%;
+  }
 }
+
 
 
 
