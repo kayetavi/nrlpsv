@@ -81,28 +81,18 @@
   <!-- ================= MAIN CONTENT ================= -->
   <div class="main-content">
 
-   <!-- 🔍 Toggle Search Button -->
-<div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
-  <button onclick="toggleSearch()"
-    style="background:#1a237e; color:white; border:none; padding:6px 14px; border-radius:4px; cursor:pointer;">
-    🔍 Search
-  </button>
-</div>
+    <!-- Search -->
+    <div id="psvSearchContainer">
+      <input
+        type="text"
+        id="psvSearch"
+        placeholder="Search PSV (by Unit, Tag, etc.)..."
+        onkeyup="filterPSV()"
+        style="width:100%; padding:10px; font-size:14px; border:1px solid #ccc; border-radius:4px;"
+      />
+    </div>
 
-<!-- Hidden Search Box -->
-<div id="psvSearchBox" style="display:none; margin-bottom:15px;">
-  <input
-    type="text"
-    id="psvSearch"
-    placeholder="Search PSV / TSV"
-    onkeyup="filterPSV()"
-    style="width:100%; padding:10px; font-size:14px; border:1px solid #ccc; border-radius:4px;"
-  >
-</div>
-
-
-   
-    <!-- ===== WELCOME PANEL ===== -->
+       <!-- ===== WELCOME PANEL ===== -->
     <div id="welcomePanel" class="welcome-panel">
       <h1>Welcome to PSV / TSV Dashboard</h1>
       <p>
