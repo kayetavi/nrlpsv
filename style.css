@@ -298,32 +298,21 @@ body.dashboard-page {
 
 
 /* ✅ Sidebar */
-/* ✅ Sidebar */
 .sidebar {
   width: 240px;
   background: #2f4050;
   color: white;
   padding: 15px;
   height: 100%;
-  min-height: 0;
-  overflow-y: auto;
+  min-height: 0; /* ✅ Flex scroll fix */
+  overflow-y: auto; /* ✅ Sidebar scroll allowed */
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-
-  /* ✅ DEFAULT HIDDEN */
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
 }
-
-.sidebar.active {
-  transform: translateX(0);
-}
-
 
 .sidebar h2 {
   text-align: center;
   margin-bottom: 10px;
 }
-
 
 #searchBox {
   width: 100%;
@@ -616,7 +605,15 @@ body.modal-open {
     border-radius: 6px;
   }
 
- 
+   .sidebar {
+  display: none;
+}
+
+.sidebar.show {
+  display: block;
+}
+
+
   .main-content {
     padding: 10px;
     overflow: auto;
@@ -691,11 +688,3 @@ body.modal-open {
 .footer-right {
   text-align: right;
 }
-
-
-
-
-
-
-
-
