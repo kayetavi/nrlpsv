@@ -606,3 +606,16 @@ body.modal-open {
 
 
 
+.welcome-panel {
+  background-image: url("images/dashboard-bg.jpg"); /* yaha image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 40px;
+  border-radius: 12px;
+  color: #ffffff;
+  position: relative;
+}
+
+
