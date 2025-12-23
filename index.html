@@ -108,10 +108,20 @@
           <span id="totalUnits">0</span>
         </div>
 
-        <div class="w-card">
-          <h3>Total PSV</h3>
-          <span id="totalPSV">0</span>
-        </div>
+        <div class="w-card clickable" onclick="showOnlyPSV()">
+    <h3>Total PSV</h3>
+    <span id="totalPSV">0</span>
+  </div>
+
+  <div class="w-card clickable" onclick="showOnlyTSV()">
+    <h3>Total TSV</h3>
+    <span id="totalTSV">0</span>
+  </div>
+
+  <div class="w-card clickable" onclick="showAllValves()">
+    <h3>Total PSV / TSV</h3>
+    <span id="totalAll">0</span>
+  </div>
 
         <div class="w-card">
           <h3>Calibration Pending</h3>
