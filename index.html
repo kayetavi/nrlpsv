@@ -64,32 +64,20 @@
 <!-- ================= DASHBOARD ================= -->
 <div class="dashboard">
 
+
 <!-- ================= SIDEBAR ================= -->
-<div class="sidebar">
-
-  <!-- 🔹 Sidebar Header with Home -->
-  <div class="sidebar-header">
-    <span class="home-btn" onclick="goHome()" title="Go to Home">🏠</span>
+  <div class="sidebar">
     <h2>Units</h2>
+    <input type="text" id="searchBox" placeholder="Search Unit..." onkeyup="searchUnit()" />
+    <ul id="unitList" style="list-style:none; padding-left:0;"></ul>
+
+    <hr style="border:0.5px solid #888; margin:10px 0;" />
+
+    <li onclick="openCalibration()" 
+        style="background:#1ab394; text-align:center; cursor:pointer; padding:10px; border-radius:4px; list-style:none;">
+      🛠 Calibration Reports
+    </li>
   </div>
-
-  <input
-    type="text"
-    id="searchBox"
-    placeholder="Search Unit..."
-    onkeyup="searchUnit()"
-  />
-
-  <ul id="unitList" style="list-style:none; padding-left:0;"></ul>
-
-  <hr style="border:0.5px solid #888; margin:10px 0;" />
-
-  <li onclick="openCalibration()"
-      style="background:#1ab394; text-align:center; cursor:pointer; padding:10px; border-radius:4px; list-style:none;">
-    🛠 Calibration Reports
-  </li>
-
-</div>
 
 
     <!-- ===== WELCOME PANEL ===== -->
