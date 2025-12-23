@@ -188,18 +188,70 @@ function updateWelcomeStats() {
   const units = [...new Set(psvData.map(p => p.unit))];
   document.getElementById("totalUnits").innerText = units.length;
 
-  // Total PSV count
+  // PSV count
   const totalPSV = psvData.filter(p =>
     p.psvNo && p.psvNo.toUpperCase().includes("PSV")
   ).length;
-  document.getElementById("totalPSV").innerText = totalPSV;
 
-  // Calibration Pending (safe check)
+  // TSV count
+  const totalTSV = psvData.filter(p =>
+    p.psvNo && p.psvNo.toUpperCase().includes("TSV")
+  ).length;
+
+  // Total PSV + TSV
+  const totalAll = totalPSV + totalTSV;
+
+  document.getElementById("totalPSV").innerText = totalPSV;
+  document.getElementById("totalTSV").innerText = totalTSV;
+  document.getElementById("totalAll").innerText = totalAll;
+
+  // Calibration Pending
   const pending = psvData.filter(p =>
     p.calibrationStatus &&
     p.calibrationStatus.toLowerCase() === "pending"
   ).length;
 
   document.getElementById("pendingCalibration").innerText = pending;
+}
+
+
+// 🔵 Click: Only PSV list
+function showOnlyPSV() {
+  document.getElementById("welcomePanel").style.display = "none";
+  document.getElementById("selectedUnit").innerText = "All Units - PSV List";
+
+  const psvs = psvData.filter(p =>
+    p.psvNo && p.psvNo.toUpperCase().includes("PSV")
+  );
+
+  document.getElementById("psvSection").innerHTML = createTable(psvs, "PSV");
+  document.getElementById("tsvSection").innerHTML = "";
+}
+
+
+// 🟠 Click: Only TSV list
+function showOnlyTSV() {
+  document.getElementById("welcomePanel").style.display = "none";
+  document.getElementById("selectedUnit").innerText = "All Units - TSV List";
+
+  const tsvs = psvData.filter(p =>
+    p.psvNo && p.psvNo.toUpperCase().includes("TSV")
+  );
+
+  document.getElementById("psvSection").innerHTML = "";
+  document.getElementById("tsvSection").innerHTML = createTable(tsvs, "TSV");
+}
+
+
+// 🟢 Click: All PSV + TSV
+function showAllValves() {
+  document.getElementById("welcomePanel").style.display = "none";
+  document.getElementById("selectedUnit").innerText = "All Units - PSV / TSV";
+
+  const psvs = psvData.filter(p => p.psvNo.toUpperCase().includes("PSV"));
+  const tsvs = psvData.filter(p => p.psvNo.toUpperCase().includes("TSV"));
+
+  document.getElementById("psvSection").innerHTML = createTable(psvs, "PSV");
+  document.getElementById("tsvSection").innerHTML = createTable(tsvs, "TSV");
 }
 
